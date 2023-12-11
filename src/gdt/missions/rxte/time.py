@@ -11,7 +11,7 @@
 #               Science and Technology Institute
 #               https://sti.usra.edu
 #
-# Developed by: Daniel Kocevski
+# Developed by: Colleen A. Wilson-Hodge
 #               National Aeronautics and Space Administration (NASA)
 #               Marshall Space Flight Center
 #               Astrophysics Branch (ST-12)
@@ -25,35 +25,40 @@
 # is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 # implied. See the License for the specific language governing permissions and limitations under the
 # License.
-#
+##this will be part of time.py
 
-import datetime
-import re
-
-import erfa
-import numpy as np
-from astropy.time import TimeFromEpoch, TimeUnique, ScaleValueError, Time
-from astropy.time.utils import day_frac
+from astropy.time.formats import TimeFromEpoch, Time
 
 __all__ = ['RxteSecTime', 'Time']
 
 class RxteSecTime(TimeFromEpoch):
-    """Represents the number of seconds elapsed since Jan 1, 2001, 00:00:00 UTC,
-    including leap seconds
-    """
+    """"Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction"""
+    
     name = 'rxte'
-    """(str): Name of the mission"""
-
-    unit = 1.0 / 86400
-    """(float): unit in days"""
-
-    epoch_val = '2001-01-01 00:01:04.184'
-    """(str): The epoch in Terrestrial Time"""
-
+    unit = 1.0/86400
+    # The 00:01:00.184 is the difference between TT and UTC on 1994-01-01
+    # The RXTE clock correction of 3.37843167E+00 s is also included
+    # This agrees with the RXTE MET given by the HEASARC xTime Tool
+    epoch_val = '1994-01-01 00:01:03.56243157'
+    #epoch_val = '1994-01-01 00:01:00.184'
     epoch_val2 = None
-
-    epoch_scale = 'tt'
-    """(str): The scale of :attr:`epoch_val`"""
-
+    epoch_scale = 'tt' # Terrestrial Time
     epoch_format = 'iso'
-    """(str): Format of :attr:`epoch_val`"""
+
+    @property
+    def sct(self):
+        # Return the spacecraft time (used for dwell file names) corresponding to the met
+        return self.met - 3.37843167
+    @property
+    def RXTEMissionDay(self):
+        # Return the RXTE mission day - this needs to be in Spacecraft time to match the 
+        # dwell sequence
+        return (self.sct)/86400
+    
+    @property
+    def RXTEMissionWeek(self):
+        # Return the RXTE mission week - this is computed in MJD based on an e-mail from 
+        # Ron Remillard on Mar-2-2022. This is used if xapt files are retrieved from the HEASARC. 
+        return int((self.mjd-50115.0)/7)
+	    
+ 
