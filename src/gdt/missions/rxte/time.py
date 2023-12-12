@@ -64,7 +64,7 @@ class Time(AstropyTime):
     def rxte_mission_day(self):
         # Return the RXTE mission day - this needs to be in Spacecraft time to match the 
         # dwell sequence
-        return (self.sct)/86400
+        return int((self.sct)/86400)
     
     @property
     def rxte_mission_week(self):
