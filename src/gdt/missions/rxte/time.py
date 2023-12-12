@@ -43,6 +43,8 @@ class RxteSecTime(TimeFromEpoch):
     epoch_val = '1994-01-01 00:01:03.56243157'
     """(str): The epoch in Terrestrial Time"""
     
+    epoch_val2 = None
+    
     epoch_scale = 'tt' # Terrestrial Time
     """(str): The scale of :attr: `epoch_val`"""
     
