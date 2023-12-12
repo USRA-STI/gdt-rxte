@@ -27,7 +27,7 @@
 # License.
 ##this will be part of time.py
 
-from astropy.time.formats import TimeFromEpoch, Time
+from astropy.time import TimeFromEpoch, TimeUnique, ScaleValueError, Time
 
 __all__ = ['RxteSecTime', 'Time']
 
@@ -45,20 +45,20 @@ class RxteSecTime(TimeFromEpoch):
     epoch_scale = 'tt' # Terrestrial Time
     epoch_format = 'iso'
 
-    @property
-    def sct(self):
+   # @property
+   # def sct(self):
         # Return the spacecraft time (used for dwell file names) corresponding to the met
-        return self.met - 3.37843167
-    @property
-    def RXTEMissionDay(self):
+   #     return self.met - 3.37843167
+   # @property
+   # def RXTEMissionDay(self):
         # Return the RXTE mission day - this needs to be in Spacecraft time to match the 
         # dwell sequence
-        return (self.sct)/86400
+   #     return (self.sct)/86400
     
-    @property
-    def RXTEMissionWeek(self):
+   # @property
+   # def RXTEMissionWeek(self):
         # Return the RXTE mission week - this is computed in MJD based on an e-mail from 
         # Ron Remillard on Mar-2-2022. This is used if xapt files are retrieved from the HEASARC. 
-        return int((self.mjd-50115.0)/7)
+   #     return int((self.mjd-50115.0)/7)
 	    
  
