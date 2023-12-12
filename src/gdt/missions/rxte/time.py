@@ -57,6 +57,7 @@ class Time(AstropyTime):
     def sct(self):
         # Return the spacecraft time (used for dwell file names) corresponding to the met
         return self.rxte - 3.37843167
+	
     @property
     def rxte_mission_day(self):
         # Return the RXTE mission day - this needs to be in Spacecraft time to match the 
