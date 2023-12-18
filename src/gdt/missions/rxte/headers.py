@@ -27,7 +27,7 @@
 # License.
 #
 from gdt.core.headers import Header, FileHeaders
-from ..time import Time
+from gdt.missions.rxte.time import Time
 
 __all__ = ['PhaiiHeaders']
 
