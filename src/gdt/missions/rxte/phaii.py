@@ -197,7 +197,7 @@ class RxtePhaiiNoHeaders(Phaii):
 #        hdu = fits.BinTableHDU.from_columns([counts_col, expos_col, qual_col, 
 #                                             time_col, endtime_col], 
 #                                            header=self.headers['SPECTRUM'])
-        hdu = fits.BinTableHDU.from_columns([counts_col, expos_col, qual_col, 
+        hdu = fits.BinTableHDU.from_columns([counts_col, expos_col, 
                                              time_col, endtime_col])
 
 #        for key, val in self.headers['SPECTRUM'].items():
