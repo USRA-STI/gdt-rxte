@@ -32,6 +32,7 @@
 from gdt.core.data_primitives import Ebounds, Gti, TimeEnergyBins
 from gdt.core.phaii import Phaii
 from astropy.io import ascii
+import astropy.io.fits as fits
 import numpy as np
 import os
 
