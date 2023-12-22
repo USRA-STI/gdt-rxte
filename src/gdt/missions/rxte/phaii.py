@@ -120,46 +120,7 @@ class RxtePhaiiNoHeaders(Phaii):
             #Error handling - inform user that file is not found and return nothing.
             print (filename,' not found.')
             return
-
-    @classmethod
-    def open_fits(cls, filename, detector, t0):
-        #inputs
-        #filename (str) - name of dwell file including path
-                			    
-#        obj = super().open(filename, **kwargs)
-        #check if filename exists	
-        if os.path.isfile(filename):
-            #if the filename exisits then open it
-            obj = fits.open(filename)
-            obj._filename = filename
-       
-            # get the headers
-#            hdrs = [hdu.header for hdu in obj.hdulist]
-#            headers = PhaiiHeaders.from_headers(hdrs)
-
-            # the channel energy bounds
-            ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
-            # the 2D time-channel counts data
-            time = obj.column(2, 'TIME')
-            endtime = obj.column(2, 'ENDTIME')
-            
-            exposure = obj._assert_exposure(obj.column(2, 'EXPOSURE'))
-            
-            data = TimeEnergyBins(obj.column(2, 'COUNTS'), time, endtime, exposure, obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
-
-            # the good time intervals
-            gti_start = obj.column(3, 'START')
-            gti_stop = obj.column(3, 'STOP')
-            gti = Gti.from_bounds(gti_start, gti_stop)
-            obj.close()
-            return class_.from_data(data, gti=gti, trigger_time=trigtime, 
-                                filename=obj.filename, headers=headers)
-        else:
-            #Error handling - inform user that file is not found and return nothing.
-            print (filename,' not found.')
-            return
 	    
-
     def _build_hdulist(self):
 
         # create FITS and primary header
@@ -268,3 +229,41 @@ class RxtePhaiiNoHeaders(Phaii):
 #        hdu.header.comments['TZERO1'] = 'Offset, equal to TRIGTIME'
 #        hdu.header.comments['TZERO2'] = 'Offset, equal to TRIGTIME'
         return hdu
+
+    @classmethod
+    def open_fits(cls, filename, detector, t0):
+        #inputs
+        #filename (str) - name of dwell file including path
+                			    
+#        obj = super().open(filename, **kwargs)
+        #check if filename exists	
+        if os.path.isfile(filename):
+            #if the filename exisits then open it
+            obj = fits.open(filename)
+            obj._filename = filename
+       
+            # get the headers
+#            hdrs = [hdu.header for hdu in obj.hdulist]
+#            headers = PhaiiHeaders.from_headers(hdrs)
+
+            # the channel energy bounds
+            ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
+            # the 2D time-channel counts data
+            time = obj.column(2, 'TIME')
+            endtime = obj.column(2, 'ENDTIME')
+            
+            exposure = obj._assert_exposure(obj.column(2, 'EXPOSURE'))
+            
+            data = TimeEnergyBins(obj.column(2, 'COUNTS'), time, endtime, exposure, obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
+
+            # the good time intervals
+            gti_start = obj.column(3, 'START')
+            gti_stop = obj.column(3, 'STOP')
+            gti = Gti.from_bounds(gti_start, gti_stop)
+            obj.close()
+            return class_.from_data(data, gti=gti, trigger_time=trigtime, 
+                                filename=obj.filename, headers=headers)
+        else:
+            #Error handling - inform user that file is not found and return nothing.
+            print (filename,' not found.')
+            return
