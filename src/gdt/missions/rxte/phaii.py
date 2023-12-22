@@ -192,7 +192,7 @@ class RxtePhaiiNoHeaders(Phaii):
 #            hdu['TSTART'] = tstart
 #            hdu['TSTOP'] = tstop
 #            try:
-3                hdu['DETCHANS'] = num_chans
+#                hdu['DETCHANS'] = num_chans
 #            except:
 #                pass
 #            if trigtime is not None:
@@ -252,9 +252,9 @@ class RxtePhaiiNoHeaders(Phaii):
     def _gti_table(self):
         tstart = np.array(self.gti.low_edges())
         tstop = np.array(self.gti.high_edges())
-        if self.trigtime is not None:
-            tstart += self.trigtime
-            tstop += self.trigtime
+#        if self.trigtime is not None:
+#            tstart += self.trigtime
+#            tstop += self.trigtime
 
         start_col = fits.Column(name='START', format='1D', unit='s', 
                                 bzero=self.trigtime, array=tstart)
