@@ -135,26 +135,25 @@ class RxtePhaiiNoHeaders(Phaii):
             obj._filename = filename
        
             # get the headers
-#	    hdrs = [hdu.header for hdu in obj.hdulist]
-#	    headers = PhaiiHeaders.from_headers(hdrs)
-	    
-	    # the channel energy bounds
-	    ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
-	    
-	    # the 2D time-channel counts data 
-	    time = obj.column(2, 'TIME')
-	    endtime = obj.column(2, 'ENDTIME')
-	    
-	    exposure = obj._assert_exposure(obj.column(2, 'EXPOSURE'))
-	    
-	    data = TimeEnergyBins(obj.column(2, 'COUNTS'), time, endtime, exposure, obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
+#            hdrs = [hdu.header for hdu in obj.hdulist]
+#            headers = PhaiiHeaders.from_headers(hdrs)
 
-	    # the good time intervals
-	    gti_start = obj.column(3, 'START')
-	    gti_stop = obj.column(3, 'STOP')
-	    gti = Gti.from_bounds(gti_start, gti_stop)
-	    obj.close()
-	    return class_.from_data(data, gti=gti, trigger_time=trigtime, 
+            # the channel energy bounds
+            ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
+            # the 2D time-channel counts data
+            time = obj.column(2, 'TIME')
+            endtime = obj.column(2, 'ENDTIME')
+            
+            exposure = obj._assert_exposure(obj.column(2, 'EXPOSURE'))
+            
+            data = TimeEnergyBins(obj.column(2, 'COUNTS'), time, endtime, exposure, obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
+
+            # the good time intervals
+            gti_start = obj.column(3, 'START')
+            gti_stop = obj.column(3, 'STOP')
+            gti = Gti.from_bounds(gti_start, gti_stop)
+            obj.close()
+            return class_.from_data(data, gti=gti, trigger_time=trigtime, 
                                 filename=obj.filename, headers=headers)
         else:
             #Error handling - inform user that file is not found and return nothing.
