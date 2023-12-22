@@ -129,7 +129,6 @@ class RxtePhaiiNoHeaders(Phaii):
 	#t0 - (float) trigger time in met
         			    
         obj = cls()
-	trigtime = t0
         #check if filename exists	
         if os.path.isfile(filename):
             #if the filename exisits then open it
