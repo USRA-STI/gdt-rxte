@@ -135,8 +135,8 @@ class RxtePhaiiNoHeaders(Phaii):
             obj._filename = filename
        
             # get the headers
-	    hdrs = [hdu.header for hdu in obj.hdulist]
-	    headers = PhaiiHeaders.from_headers(hdrs)
+#	    hdrs = [hdu.header for hdu in obj.hdulist]
+#	    headers = PhaiiHeaders.from_headers(hdrs)
 	    
 	    # the channel energy bounds
 	    ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
