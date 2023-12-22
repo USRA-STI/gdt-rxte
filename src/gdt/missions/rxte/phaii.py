@@ -122,12 +122,10 @@ class RxtePhaiiNoHeaders(Phaii):
             return
 
     @classmethod
-    def open_fits(cls, filename, detector, t0):
+    def open_fits(cls, filename):
         #inputs
         #filename (str) - name of dwell file including path
-        #detector (str) - detector name: ssc0, ssc1, or ssc2
-	#t0 - (float) trigger time in met
-        			    
+                			    
         obj = cls()
         #check if filename exists	
         if os.path.isfile(filename):
