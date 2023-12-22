@@ -84,8 +84,8 @@ _syserr_card = ('SYS_ERR', 0., 'No systematic errors')
 _telescope_card = ('TELESCOP', _telescope, 'Name of mission/satellite')
 _timesys_card = ('TIMESYS', _timesys, 'Time system used in time keywords')
 _timeunit_card = ('TIMEUNIT', _timeunit, 'Time since MJDREF, used in TSTART and TSTOP')
-_tstart_card = ('TSTART', 0.0, '[GLAST MET] Observation start time')
-_tstop_card = ('TSTOP', 0.0, '[GLAST MET] Observation stop time')
+_tstart_card = ('TSTART', 0.0, '[RXTE ASM MET] Observation start time')
+_tstop_card = ('TSTOP', 0.0, '[RXTE ASM MET] Observation stop time')
 _trigtime_card = ('TRIGTIME', 0.0, 'Trigger time relative to MJDREF, double precision')
 
 #----------------
@@ -122,13 +122,9 @@ class EboundsHeader(RxteHeader):
                 _observer_card, _origin_card, _date_card, _date_obs_card,
                 _date_end_card, _timesys_card, _timeunit_card, _mjdrefi_card,
                 _mjdreff_card, _tstart_card, _tstop_card, _hduclass_card,
-                ('HDUCLAS1', 'RESPONSE', 'These are typically found in RMF ' \
-                                         'files'),
-                ('HDUCLAS2', 'EBOUNDS', 'From CAL/GEN/92-002'), _hduvers_card,
-                _chantype_card, _filter_card, _detchans_card,
-                ('CH2E_VER', '', 'Channel to energy conversion scheme used'),
-                ('GAIN_COR', 0.0, 'Gain correction factor applied to energy ' \
-                                  'edges')]
+                ('HDUCLAS1', 'RESPONSE', 'Not available'),
+                ('HDUCLAS2', 'EBOUNDS', 'Fixed values'), _hduvers_card,
+                _chantype_card, _filter_card, _detchans_card]
 
 class SpectrumHeader(RxteHeader):
     name = 'SPECTRUM'
