@@ -54,7 +54,7 @@ class RxtePhaiiNoHeaders(Phaii):
         return self._detector
     
     @classmethod
-    def open(cls, filename, detector, t0):
+    def open_ascii(cls, filename, detector, t0):
         #inputs
         #filename (str) - name of dwell file including path
         #detector (str) - detector name: ssc0, ssc1, or ssc2
@@ -126,7 +126,7 @@ class RxtePhaiiNoHeaders(Phaii):
         #inputs
         #filename (str) - name of dwell file including path
                 			    
-        obj = cls()
+        obj = super().open(filename, **kwargs)
         #check if filename exists	
         if os.path.isfile(filename):
             #if the filename exisits then open it
