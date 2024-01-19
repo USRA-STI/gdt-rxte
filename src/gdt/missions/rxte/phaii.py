@@ -43,11 +43,7 @@ class RxtePhaiiNoHeaders(Phaii):
     def __init__(self, *args):            
         super(RxtePhaiiNoHeaders, self).__init__(*args)
         self._detector = None
-    
-#    def write(self, dirname, filename=None):
-#        #writing the RXTEPhaii is not yet implemented.
-#        raise NotImplementedError
-    
+        
     @property
     def detector(self):
         #returns the user input value of detector. It should be ssc0, ssc1, or ssc2
@@ -125,10 +121,7 @@ class RxtePhaiiNoHeaders(Phaii):
 
         # create FITS and primary header
         hdulist = fits.HDUList()
-#        primary_hdu = fits.PrimaryHDU(header=self.headers['PRIMARY'])
         primary_hdu = fits.PrimaryHDU()
-#       for key, val in self.headers['PRIMARY'].items():
-#           primary_hdu.header[key] = val
         hdulist.append(primary_hdu)
         
         # the ebounds extension
@@ -144,22 +137,7 @@ class RxtePhaiiNoHeaders(Phaii):
         hdulist.append(gti_hdu)
         
         return hdulist
-        
-#    def _build_headers(self, trigtime, tstart, tstop, num_chans):
-        
-#        headers = self.headers.copy()
-#        for hdu in headers:
-#            hdu['TSTART'] = tstart
-#            hdu['TSTOP'] = tstop
-#            try:
-#                hdu['DETCHANS'] = num_chans
-#            except:
-#                pass
-#            if trigtime is not None:
-#                hdu['TRIGTIME'] = trigtime
-#        
-#        return headers
-    
+            
     def _ebounds_table(self):
         chan_col = fits.Column(name='CHANNEL', format='1I', 
                                array=np.arange(self.num_chans, dtype=int))
@@ -168,11 +146,7 @@ class RxtePhaiiNoHeaders(Phaii):
         emax_col = fits.Column(name='E_MAX', format='1E', unit='keV', 
                                array=self.ebounds.high_edges())
         
-#        hdu = fits.BinTableHDU.from_columns([chan_col, emin_col, emax_col], 
-#                                            header=self.headers['EBOUNDS'])
         hdu = fits.BinTableHDU.from_columns([chan_col, emin_col, emax_col])
-#        for key, val in self.headers['EBOUNDS'].items():
-#            hdu.header[key] = val
 
         return hdu
 
@@ -189,49 +163,29 @@ class RxtePhaiiNoHeaders(Phaii):
                                  array=self.data.counts)
         expos_col = fits.Column(name='EXPOSURE', format='1E', unit='s', 
                                 array=self.data.exposure)
-#       qual_col = fits.Column(name='QUALITY', format='1I', 
-#                               array=self.data.quality)
         time_col = fits.Column(name='TIME', format='1D', unit='s', 
                                bzero=self.trigtime, array=tstart)
         endtime_col = fits.Column(name='ENDTIME', format='1D', unit='s', 
                                   bzero=self.trigtime, array=tstop)
-#        hdu = fits.BinTableHDU.from_columns([counts_col, expos_col, qual_col, 
-#                                             time_col, endtime_col], 
-#                                            header=self.headers['SPECTRUM'])
         hdu = fits.BinTableHDU.from_columns([counts_col, expos_col, 
                                              time_col, endtime_col])
 
-#        for key, val in self.headers['SPECTRUM'].items():
-#            hdu.header[key] = val
-#        hdu.header.comments['TZERO1'] = 'offset for unsigned integers'
-#        hdu.header.comments['TSCAL1'] = 'data are not scaled'
-#        hdu.header.comments['TZERO4'] = 'Offset, equal to TRIGTIME'
-#        hdu.header.comments['TZERO5'] = 'Offset, equal to TRIGTIME'
         return hdu
 
     def _gti_table(self):
         tstart = np.array(self.gti.low_edges())
         tstop = np.array(self.gti.high_edges())
-#        if self.trigtime is not None:
-#            tstart += self.trigtime
-#            tstop += self.trigtime
 
         start_col = fits.Column(name='START', format='1D', unit='s', 
                                 bzero=self.trigtime, array=tstart)
         stop_col = fits.Column(name='STOP', format='1D', unit='s', 
                                 bzero=self.trigtime, array=tstop)
-#        hdu = fits.BinTableHDU.from_columns([start_col, stop_col], 
-#                                            header=self.headers['GTI'])
         hdu = fits.BinTableHDU.from_columns([start_col, stop_col])
         
-#        for key, val in self.headers['GTI'].items():
-#            hdu.header[key] = val        
-#        hdu.header.comments['TZERO1'] = 'Offset, equal to TRIGTIME'
-#        hdu.header.comments['TZERO2'] = 'Offset, equal to TRIGTIME'
         return hdu
 
     @classmethod
-    def open_fits(cls, filename, **kwargs):
+    def open_fits(cls, filename, detector, t0, **kwargs):
         #inputs
         #filename (str) - name of dwell file including path
                 			    
@@ -242,9 +196,6 @@ class RxtePhaiiNoHeaders(Phaii):
             #obj = fits.open(filename)
             obj._filename = filename
        
-            # get the headers
-#            hdrs = [hdu.header for hdu in obj.hdulist]
-#            headers = PhaiiHeaders.from_headers(hdrs)
 
             # the channel energy bounds
             ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
@@ -260,9 +211,9 @@ class RxtePhaiiNoHeaders(Phaii):
             gti_start = obj.column(3, 'START')
             gti_stop = obj.column(3, 'STOP')
             gti = Gti.from_bounds(gti_start, gti_stop)
+            class_ = cls
             obj.close()
-            return class_.from_data(data, gti=gti, trigger_time=trigtime, 
-                                filename=obj.filename, headers=headers)
+            return class_.from_data(data, gti=gti, trigger_time=t0, detector=detector, filename=obj.filename)
         else:
             #Error handling - inform user that file is not found and return nothing.
             print (filename,' not found.')
