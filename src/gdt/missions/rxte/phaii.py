@@ -231,7 +231,7 @@ class RxtePhaiiNoHeaders(Phaii):
         return hdu
 
     @classmethod
-    def open_fits(cls, filename):
+    def open_fits(cls, filename, **kwargs):
         #inputs
         #filename (str) - name of dwell file including path
                 			    
