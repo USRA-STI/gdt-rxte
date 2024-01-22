@@ -80,9 +80,9 @@
 <span id="rxte-missiontable"></span><h1>RXTE ASM Data Finders (<a class="reference internal" href="#module-gdt.missions.rxte.missiontable" title="gdt.missions.rxte.missiontable"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.missiontable</span></code></a>)<a class="headerlink" href="#rxte-asm-data-finders-gdt-missions-rxte-missiontable" title="Permalink to this heading">¶</a></h1>
 <p>A natural question may be: “Where do I find the data I need?” Well, you’re in
 luck, because this will show you how to find the data you seek. RXTE ASM Data is
-hosted publicly on Zenodo the data are stored in a consistent directory structure.
-But instead of having to navigate a winding maze of directories, we provide a couple of
-classes built to retrieve the data you want once you’ve downloaded it. RXTE ASM data is ordered
+hosted publicly on Zenodo. You will need to download the tar files to get the mission table and individual dwell files. The data
+are stored in a consistent directory structure. But instead of having to navigate a winding maze of directories, we provide a
+couple of  classes built to retrieve the data you want once you’ve downloaded it. RXTE ASM data is ordered
 into dwells and dwell sequence numbers that are summarized in the mission table file.</p>
 <section id="finding-rxte-asm-data">
 <h2>Finding RXTE ASM Data<a class="headerlink" href="#finding-rxte-asm-data" title="Permalink to this heading">¶</a></h2>
@@ -94,7 +94,8 @@ into dwells and dwell sequence numbers that are summarized in the mission table 
 </div>
 <dl>
 <dt>Now select a time you are interested in, for example a trigger time from RXTE or another mission</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.missions.rxte.time</span> <span class="kn">import</span> <span class="n">Time</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t0</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s2">&quot;1997-08-15T12:07:04&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s2">&quot;1997-08-15T12:07:04&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">rxte</span>
 </pre></div>
 </div>
 </dd>

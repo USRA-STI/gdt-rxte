@@ -5,9 +5,9 @@ RXTE ASM Data Finders (:mod:`gdt.missions.rxte.missiontable`)
 **************************************************************
 A natural question may be: "Where do I find the data I need?" Well, you're in 
 luck, because this will show you how to find the data you seek. RXTE ASM Data is 
-hosted publicly on Zenodo the data are stored in a consistent directory structure. 
-But instead of having to navigate a winding maze of directories, we provide a couple of 
-classes built to retrieve the data you want once you've downloaded it. RXTE ASM data is ordered 
+hosted publicly on Zenodo. You will need to download the tar files to get the mission table and individual dwell files. The data 
+are stored in a consistent directory structure. But instead of having to navigate a winding maze of directories, we provide a 
+couple of  classes built to retrieve the data you want once you've downloaded it. RXTE ASM data is ordered 
 into dwells and dwell sequence numbers that are summarized in the mission table file.
 
 Finding RXTE ASM Data
@@ -22,7 +22,8 @@ Let's start with reading in the RXTE ASM Mission Table. Note that this table nee
     
 Now select a time you are interested in, for example a trigger time from RXTE or another mission    
     >>> from gdt.missions.rxte.time import Time
-    >>> t0 = Time("1997-08-15T12:07:04")
+    >>> time = Time("1997-08-15T12:07:04")
+    >>> t0 = time.rxte
     
 
 We don't really care about the directory structure, we just want the data. So 
