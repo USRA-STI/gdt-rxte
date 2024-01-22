@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RXTEMissionTable &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-astropy.css?v=cfc02a30" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" href="../_static/override.css" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/gdt_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RXTE ASM PHAII Data (gdt.missions.rxte.phaii)" href="../missions/rxte/phaii.html" />
+    <link rel="prev" title="RXTE ASM Data Finders (gdt.missions.rxte.missiontable)" href="../missions/rxte/missiontable.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">gdt</span><span id="logotext2">-fermi</span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../missions/rxte/phaii.html" title="RXTE ASM PHAII Data (gdt.missions.rxte.phaii)">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="../missions/rxte/missiontable.html" title="RXTE ASM Data Finders (gdt.missions.rxte.missiontable)">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">The Gamma-ray Data Tools 1.0.0 documentation</a>
+	 &#187;
+      </li>
+      <li><a href="../missions/rxte/missiontable.html" accesskey="U">RXTE ASM Data Finders (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.missiontable</span></code>)</a> &#187;</li>
+      
+      <li>RXTEMissionTable</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="rxtemissiontable">
+<h1>RXTEMissionTable<a class="headerlink" href="#rxtemissiontable" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="gdt.missions.rxte.missiontable.RXTEMissionTable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gdt.missions.rxte.missiontable.</span></span><span class="sig-name descname"><span class="pre">RXTEMissionTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwell_seq_nums</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwell_ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/missiontable.html#RXTEMissionTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.missiontable.RXTEMissionTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods Summary</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_file" title="gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dwell_file</span></code></a>(t0, dirname)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_ids" title="gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dwell_ids</span></code></a>(t0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.open" title="gdt.missions.rxte.missiontable.RXTEMissionTable.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(filename)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_file">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_dwell_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/missiontable.html#RXTEMissionTable.get_dwell_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_ids">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_dwell_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/missiontable.html#RXTEMissionTable.get_dwell_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.missiontable.RXTEMissionTable.open">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/missiontable.html#RXTEMissionTable.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">RXTEMissionTable</a><ul>
+<li><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable"><code class="docutils literal notranslate"><span class="pre">RXTEMissionTable</span></code></a><ul>
+<li><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_file"><code class="docutils literal notranslate"><span class="pre">RXTEMissionTable.get_dwell_file()</span></code></a></li>
+<li><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.get_dwell_ids"><code class="docutils literal notranslate"><span class="pre">RXTEMissionTable.get_dwell_ids()</span></code></a></li>
+<li><a class="reference internal" href="#gdt.missions.rxte.missiontable.RXTEMissionTable.open"><code class="docutils literal notranslate"><span class="pre">RXTEMissionTable.open()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../missions/rxte/missiontable.html"
+                          title="previous chapter">RXTE ASM Data Finders (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.missiontable</span></code>)</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../missions/rxte/phaii.html"
+                          title="next chapter">RXTE ASM PHAII Data (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.phaii</span></code>)</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/gdt.missions.rxte.missiontable.RXTEMissionTable.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/api/gdt.missions.rxte.missiontable.RXTEMissionTable.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright .<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

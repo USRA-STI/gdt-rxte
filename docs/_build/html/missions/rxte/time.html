@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RXTE Mission Epoch (gdt.missions.rxte.time) &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-astropy.css?v=cfc02a30" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" href="../../_static/override.css" type="text/css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=af2ce170"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../_static/gdt_favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="RxteSecTime" href="../../api/gdt.missions.rxte.time.RxteSecTime.html" />
+    <link rel="prev" title="Installation" href="../../install.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../../index.html"><span id="logotext1">gdt</span><span id="logotext2">-fermi</span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../../api/gdt.missions.rxte.time.RxteSecTime.html" title="RxteSecTime">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="../../install.html" title="Installation">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../../index.html">The Gamma-ray Data Tools 1.0.0 documentation</a>
+	 &#187;
+      </li>
+      
+      <li>RXTE Mission Epoch  (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.time</span></code>)</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="rxte-mission-epoch-gdt-missions-rxte-time">
+<span id="rxte-time"></span><h1>RXTE Mission Epoch  (<a class="reference internal" href="#module-gdt.missions.rxte.time" title="gdt.missions.rxte.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.time</span></code></a>)<a class="headerlink" href="#rxte-mission-epoch-gdt-missions-rxte-time" title="Permalink to this heading">¶</a></h1>
+<p>The RXTE Mission epoch, also called the RXTE Mission Elapsed Time (MET) is
+the number of seconds elapsed since January 1, 1994, 00:00:00 UTC, including
+leap seconds and an RXTE clock correction of 3.37843167 s.  We have defined
+a specialized epoch to work with Astropy <a href="#id1"><span class="problematic" id="id2">``</span></a>Time``objects so that RXTE MET can
+be easily converted to/from other formats and time scales.</p>
+<p>To use this, we simply import and create an astropy Time object with a <cite>‘rxte’</cite>
+format:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.missions.rxte.time</span> <span class="kn">import</span> <span class="n">Time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="mi">114264420</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;rxte&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span>
+<span class="go">&lt;Time object: scale=&#39;tt&#39; format=&#39;rxte&#39; value=114264420.0&gt;</span>
+</pre></div>
+</div>
+<p>Now, say we want to retrieve the GPS timestamp:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">gps</span>
+<span class="go">555682032.3784316</span>
+</pre></div>
+</div>
+<p>The Astropy <code class="docutils literal notranslate"><span class="pre">Time</span></code> object readily converts it for us. We can also do the
+reverse conversion:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gps_time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">rxte_met</span><span class="o">.</span><span class="n">gps</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gps_time</span>
+<span class="go">&lt;Time object: scale=&#39;tai&#39; format=&#39;gps&#39; value=555682032.3784316&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gps_time</span><span class="o">.</span><span class="n">rxte</span>
+<span class="go">1142644120.0</span>
+</pre></div>
+</div>
+<p>And we should, of course, get back the RXTE MET we started with.  This enables
+you do do any time conversions already provided by Astropy, as well as time
+conversions between other missions within the GDT.</p>
+<p>In addition to time conversions, all time formatting available in Astropy is
+also available here.  For example, we can format the RXTE MET in ISO format:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">iso</span>
+<span class="go">&#39;1997-08-15 12:08:03.562&#39;</span>
+</pre></div>
+</div>
+<p>Finally, there are additional specialized formats associated with the RXTE epoch, which
+allows us to compute the RXTE spacecraft time, equal to the RXTE MET-RXTE clock correction of
+3.37843167 s, RXTE mission day, and RXTE mission week,which
+are time based and needed to identify RXTE ASM data files.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">sct</span>
+<span class="go">114264416.62156834</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">rxte_mission_day</span>
+<span class="go">1322</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">rxte_mission_week</span>
+<span class="go">80</span>
+</pre></div>
+</div>
+<section id="reference-api">
+<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this heading">¶</a></h2>
+<section id="module-gdt.missions.rxte.time">
+<span id="gdt-missions-rxte-time-module"></span><h3>gdt.missions.rxte.time Module<a class="headerlink" href="#module-gdt.missions.rxte.time" title="Permalink to this heading">¶</a></h3>
+<section id="classes">
+<h4>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h4>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/gdt.missions.rxte.time.RxteSecTime.html#gdt.missions.rxte.time.RxteSecTime" title="gdt.missions.rxte.time.RxteSecTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RxteSecTime</span></code></a>(val1, val2, scale, precision, ...)</p></td>
+<td><p>&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time" title="gdt.missions.rxte.time.Time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Time</span></code></a>(val[, val2, format, scale, precision, ...])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="class-inheritance-diagram">
+<h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this heading">¶</a></h4>
+digraph inheritanceea2a107146 {
+bgcolor=transparent;
+rankdir=LR;
+size=&quot;8.0, 12.0&quot;;
+  &quot;NDArrayShapeMethods&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Mixin class to provide shape-changing methods.&quot;];
+  &quot;RxteSecTime&quot; [URL=&quot;../../api/gdt.missions.rxte.time.RxteSecTime.html#gdt.missions.rxte.time.RxteSecTime&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;\&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s&quot;];
+  &quot;TimeFromEpoch&quot; -&gt; &quot;RxteSecTime&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;ShapedLikeNDArray&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Mixin class to provide shape-changing methods.&quot;];
+  &quot;NDArrayShapeMethods&quot; -&gt; &quot;ShapedLikeNDArray&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;Time&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Represent and manipulate times and dates for astronomy.&quot;];
+  &quot;TimeBase&quot; -&gt; &quot;Time&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;Time&quot; [URL=&quot;../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
+  &quot;Time&quot; -&gt; &quot;Time&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;TimeBase&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Base time class from which Time and TimeDelta inherit.&quot;];
+  &quot;ShapedLikeNDArray&quot; -&gt; &quot;TimeBase&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;TimeFormat&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Base class for time representations.&quot;];
+  &quot;TimeFromEpoch&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Base class for times that represent the interval from a particular&quot;];
+  &quot;TimeNumeric&quot; -&gt; &quot;TimeFromEpoch&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;TimeNumeric&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;];
+  &quot;TimeFormat&quot; -&gt; &quot;TimeNumeric&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">RXTE Mission Epoch  (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.time</span></code>)</a><ul>
+<li><a class="reference internal" href="#reference-api">Reference/API</a><ul>
+<li><a class="reference internal" href="#module-gdt.missions.rxte.time">gdt.missions.rxte.time Module</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../../install.html"
+                          title="previous chapter">Installation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../../api/gdt.missions.rxte.time.RxteSecTime.html"
+                          title="next chapter">RxteSecTime</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/missions/rxte/time.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../../_sources/missions/rxte/time.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright .<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

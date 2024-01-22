@@ -13,7 +13,7 @@
 import os
 import sys
 sys.path.append(os.path.abspath('../src'))
-from gdt.missions.fermi import __version__
+from gdt.missions.rxte import __version__
 
 
 # -- Project information -----------------------------------------------------

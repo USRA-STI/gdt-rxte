@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gdt.missions.rxte.time &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bootstrap-astropy.css?v=cfc02a30" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" href="../../../../_static/override.css" type="text/css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=af2ce170"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../../_static/gdt_favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../../../../index.html"><span id="logotext1">gdt</span><span id="logotext2">-fermi</span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../../../../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../../../../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li>
+	<a href="../../../../index.html">The Gamma-ray Data Tools 1.0.0 documentation</a>
+	 &#187;
+      </li>
+      <li><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li>
+      
+       
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gdt.missions.rxte.time</h1><div class="highlight"><pre>
+<span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT WITH UNLIMITED RIGHTS</span>
+<span class="c1">#</span>
+<span class="c1"># Contract No.: CA 80MSFC17M0022</span>
+<span class="c1"># Contractor Name: Universities Space Research Association</span>
+<span class="c1"># Contractor Address: 7178 Columbia Gateway Drive, Columbia, MD 21046</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2017-2022 by Universities Space Research Association (USRA). All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Developed by: William Cleveland and Adam Goldstein</span>
+<span class="c1">#               Universities Space Research Association</span>
+<span class="c1">#               Science and Technology Institute</span>
+<span class="c1">#               https://sti.usra.edu</span>
+<span class="c1">#</span>
+<span class="c1"># Developed by: Daniel Kocevski</span>
+<span class="c1">#               National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#               Marshall Space Flight Center</span>
+<span class="c1">#               Astrophysics Branch (ST-12)</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
+<span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed under the License</span>
+<span class="c1"># is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or</span>
+<span class="c1"># implied. See the License for the specific language governing permissions and limitations under the</span>
+<span class="c1"># License.</span>
+<span class="c1">##this will be part of time.py</span>
+
+<span class="kn">from</span> <span class="nn">astropy.time</span> <span class="kn">import</span> <span class="n">TimeFromEpoch</span><span class="p">,</span> <span class="n">TimeUnique</span><span class="p">,</span> <span class="n">ScaleValueError</span><span class="p">,</span> <span class="n">Time</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RxteSecTime&#39;</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="RxteSecTime"><a class="viewcode-back" href="../../../../api/gdt.missions.rxte.time.RxteSecTime.html#gdt.missions.rxte.time.RxteSecTime">[docs]</a><span class="k">class</span> <span class="nc">RxteSecTime</span><span class="p">(</span><span class="n">TimeFromEpoch</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s &quot;&quot;&quot;</span>
+    
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;rxte&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(str): Name of the mision&quot;&quot;&quot;</span>    
+    
+    <span class="n">unit</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mi">86400</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(float): unit in days&quot;&quot;&quot;</span>
+    
+    <span class="n">epoch_val</span> <span class="o">=</span> <span class="s1">&#39;1994-01-01 00:01:03.56243157&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(str): The epoch in Terrestrial Time&quot;&quot;&quot;</span>
+    
+    <span class="n">epoch_val2</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="n">epoch_scale</span> <span class="o">=</span> <span class="s1">&#39;tt&#39;</span> <span class="c1"># Terrestrial Time</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(str): The scale of :attr: `epoch_val`&quot;&quot;&quot;</span>
+    
+    <span class="n">epoch_format</span> <span class="o">=</span> <span class="s1">&#39;iso&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(str): Format of :attr:`epoch_val`&quot;&quot;&quot;</span></div>
+    
+<span class="kn">from</span> <span class="nn">astropy.time</span> <span class="kn">import</span> <span class="n">Time</span> <span class="k">as</span> <span class="n">AstropyTime</span>
+
+<div class="viewcode-block" id="Time"><a class="viewcode-back" href="../../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time">[docs]</a><span class="k">class</span> <span class="nc">Time</span><span class="p">(</span><span class="n">AstropyTime</span><span class="p">):</span>    
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Return the spacecraft time (used for dwell file names) corresponding to the met</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rxte</span> <span class="o">-</span> <span class="mf">3.37843167</span>
+	
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rxte_mission_day</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Return the RXTE mission day - this needs to be in Spacecraft time to match the </span>
+        <span class="c1"># dwell sequence</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sct</span><span class="p">)</span><span class="o">/</span><span class="mi">86400</span><span class="p">)</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rxte_mission_week</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Return the RXTE mission week - this is computed in MJD based on an e-mail from </span>
+        <span class="c1"># Ron Remillard on Mar-2-2022. This is used if xapt files are retrieved from the HEASARC. </span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">mjd</span><span class="o">-</span><span class="mf">50115.0</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span></div>
+	    
+ 
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+
+
+<form action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right"> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright .<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>
