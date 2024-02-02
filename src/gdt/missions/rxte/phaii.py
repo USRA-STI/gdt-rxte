@@ -46,14 +46,14 @@ class RxtePhaiiNoHeaders(Phaii):
         
     @property
     def detector(self):
-        #returns the user input value of detector. It should be ssc0, ssc1, or ssc2
+        #returns the user input value of detector. It should be ssc1, ssc2, or ssc3
         return self._detector
     
     @classmethod
     def open_ascii(cls, filename, detector, t0):
         #inputs
         #filename (str) - name of dwell file including path
-        #detector (str) - detector name: ssc0, ssc1, or ssc2
+        #detector (str) - detector name: ssc1, ssc2, or ssc3
 	#t0 - (float) trigger time in met
         			    
         obj = cls()
@@ -69,18 +69,18 @@ class RxtePhaiiNoHeaders(Phaii):
 	    #first column is spacecraft time (MET-3.37s)
             data["col1"].name="sct"
             #second column is count rate in 1.5-3 keV band for ssc0
-            data["col2"].name="ssc0a"
+            data["col2"].name="ssc1a"
             #third column is count rate in 3-5 keV band for ssc0
-            data["col3"].name="ssc0b"
+            data["col3"].name="ssc1b"
             #fourth column is count rate in 5-12 keV band for ssc0
 	    # pattern repeats with columns 5-7 corresponding to the three bands in ssc1 and 8-10 for the three bands in ssc2
-            data["col4"].name="ssc0c"
-            data["col5"].name="ssc1a"
-            data["col6"].name="ssc1b"
-            data["col7"].name="ssc1c"
-            data["col8"].name="ssc2a"
-            data["col9"].name="ssc2b"
-            data["col10"].name="ssc2c"
+            data["col4"].name="ssc1c"
+            data["col5"].name="ssc2a"
+            data["col6"].name="ssc2b"
+            data["col7"].name="ssc2c"
+            data["col8"].name="ssc3a"
+            data["col9"].name="ssc3b"
+            data["col10"].name="ssc3c"
             # RXTE ASM has fixed energy bounds 1.5-3, 3-5, 5-12 keV for all three detectors.
             # obj._ebounds = Ebounds.from_bounds(emin, emax) 
             emin = np.array([1.5,3.0,5.0])
@@ -89,15 +89,15 @@ class RxtePhaiiNoHeaders(Phaii):
             # arrange RXTE ASM data into TimeEnergyBins inputs
             # obj._data = TimeEnergyBins(counts, tstart, tstop, exposure,
             #                            emin, emax, quality=quality)
-            if detector == "ssc0":
-                counts = np.transpose(np.array([data["ssc0a"],data["ssc0b"],data["ssc0c"]]))
-            elif detector == "ssc1":
+            if detector == "ssc1":
                 counts = np.transpose(np.array([data["ssc1a"],data["ssc1b"],data["ssc1c"]]))
             elif detector == "ssc2":
                 counts = np.transpose(np.array([data["ssc2a"],data["ssc2b"],data["ssc2c"]]))
+            elif detector == "ssc3":
+                counts = np.transpose(np.array([data["ssc3a"],data["ssc3b"],data["ssc3c"]]))
             else:
                 #check if detector input correctly
-                print (detector,' not found. Input ssc0, ssc1, or ssc2')
+                print (detector,' not found. Input ssc1, ssc2, or ssc3')
                 return
             #define times in MET with 1 second long bins
             tstart = np.array([data["sct"]])+3.37843167-t0
@@ -111,6 +111,7 @@ class RxtePhaiiNoHeaders(Phaii):
             obj._gti = Gti.from_bounds(np.amin(tstart),np.amax(tstop))
             # set _detector to input detector value
             obj._detector = detector
+            obj._trigtime = t0
             return obj
         else:
             #Error handling - inform user that file is not found and return nothing.
@@ -196,7 +197,6 @@ class RxtePhaiiNoHeaders(Phaii):
             #obj = fits.open(filename)
             obj._filename = filename
        
-
             # the channel energy bounds
             ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
             # the 2D time-channel counts data
@@ -205,15 +205,16 @@ class RxtePhaiiNoHeaders(Phaii):
             
             exposure = obj._assert_exposure(obj.column(2, 'EXPOSURE'))
             
-            data = TimeEnergyBins(obj.column(2, 'COUNTS'), time, endtime, exposure, obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
+            data = TimeEnergyBins(obj.column(2, 'COUNTS'), time-t0, endtime-t0, exposure, obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
 
             # the good time intervals
             gti_start = obj.column(3, 'START')
             gti_stop = obj.column(3, 'STOP')
             gti = Gti.from_bounds(gti_start, gti_stop)
+            cls.detector=detector
             class_ = cls
             obj.close()
-            return class_.from_data(data, gti=gti, trigger_time=t0, detector=detector, filename=obj.filename)
+            return class_.from_data(data, gti=gti, trigger_time=t0, filename=obj.filename)
         else:
             #Error handling - inform user that file is not found and return nothing.
             print (filename,' not found.')

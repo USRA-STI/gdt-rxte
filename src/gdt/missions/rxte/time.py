@@ -68,8 +68,8 @@ class Time(AstropyTime):
     
     @property
     def rxte_mission_week(self):
-        # Return the RXTE mission week - this is computed in MJD based on an e-mail from 
-        # Ron Remillard on Mar-2-2022. This is used if xapt files are retrieved from the HEASARC. 
-        return int((self.mjd-50115.0)/7)
+        # Return the RXTE mission week - this is computed in MJD based on the short term short form timelines 
+	# available through the RXTE GOF. Mission week 0 started on 1996-Jan-26
+        return int((self.mjd-50108.0)/7)
 	    
  
