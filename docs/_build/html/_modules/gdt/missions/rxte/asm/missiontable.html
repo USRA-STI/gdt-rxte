@@ -1,0 +1,240 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gdt.missions.rxte.asm.missiontable &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css" />
+    <link rel="stylesheet" href="../../../../../_static/override.css" type="text/css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="text/javascript" src="../../../../../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../../../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/gdt_favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../../../../../index.html"><span id="logotext1">gdt</span><span id="logotext2">-fermi</span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../../../../../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../../../../../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li>
+	<a href="../../../../../index.html">The Gamma-ray Data Tools 1.0.0 documentation</a>
+	 &#187;
+      </li>
+      <li><a href="../../../../index.html" accesskey="U">Module code</a> &#187;</li>
+      
+       
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gdt.missions.rxte.asm.missiontable</h1><div class="highlight"><pre>
+<span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT </span>
+<span class="c1"># WITH UNLIMITED RIGHTS</span>
+<span class="c1">#</span>
+<span class="c1"># Developed by: Colleen A. Wilson-Hodge</span>
+<span class="c1"># 			    National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#     			Marshall Space Flight Center</span>
+<span class="c1">#     			Astrophysics Branch (ST-12)</span>
+<span class="c1">#</span>
+<span class="c1"># This work is a derivative of the Gamma-ray Data Tools (GDT), including the </span>
+<span class="c1"># Core and Fermi packages, originally developed by the following:</span>
+<span class="c1">#</span>
+<span class="c1">#     William Cleveland and Adam Goldstein</span>
+<span class="c1">#     Universities Space Research Association</span>
+<span class="c1">#     Science and Technology Institute</span>
+<span class="c1">#     https://sti.usra.edu</span>
+<span class="c1">#     </span>
+<span class="c1">#     Daniel Kocevski</span>
+<span class="c1">#     National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#     Marshall Space Flight Center</span>
+<span class="c1">#     Astrophysics Branch (ST-12)</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not </span>
+<span class="c1"># use this file except in compliance with the License. You may obtain a copy of </span>
+<span class="c1"># the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software </span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT </span>
+<span class="c1"># WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the </span>
+<span class="c1"># License for the specific language governing permissions and limitations under </span>
+<span class="c1"># the License.</span>
+<span class="c1">#Make a class to read the RXTE mission table </span>
+<span class="c1">#This takes a long time</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">ascii</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<div class="viewcode-block" id="RXTEMissionTable"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable">[docs]</a><span class="k">class</span> <span class="nc">RXTEMissionTable</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">dwell_seq_nums</span><span class="p">,</span> <span class="n">dwell_ids</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="n">times</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dwell_seq_nums</span> <span class="o">=</span> <span class="n">dwell_seq_nums</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dwell_ids</span> <span class="o">=</span> <span class="n">dwell_ids</span>
+    
+<div class="viewcode-block" id="RXTEMissionTable.open"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.open">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="c1">#open ascii table</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;no_header&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s&#39;</span><span class="p">,</span><span class="n">guess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fast_reader</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="c1">#rename columns</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;metstarttime&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dwellseqnum&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dwellnum&quot;</span>
+            <span class="c1">#data[3].name=&quot;exposssc0&quot;</span>
+            <span class="c1">#data[4].name=&quot;exposssc1&quot;</span>
+            <span class="c1">#data[5].name=&quot;exposssc2&quot;</span>
+            <span class="c1">#data[6].name=&quot;rassc0&quot;</span>
+            <span class="c1">#data[7].name=&quot;decssc0&quot;</span>
+            <span class="c1">#data[8].name=&quot;posangssc0&quot;</span>
+            <span class="c1">#data[9].name=&quot;rassc1&quot;</span>
+            <span class="c1">#data[10].name=&quot;decssc1&quot;</span>
+            <span class="c1">#data[11].name=&quot;posangssc1&quot;</span>
+            <span class="c1">#data[12].name=&quot;rassc2&quot;</span>
+            <span class="c1">#data[&quot;col14&quot;].name=&quot;decssc2&quot;</span>
+            <span class="c1">#data[&quot;col15&quot;].name=&quot;posangssc2&quot;</span>
+            <span class="c1">#data[&quot;col16&quot;].name=&quot;instrumentrotang&quot;</span>
+            <span class="c1">#data[&quot;col17&quot;].name=&quot;sumcounts0&quot;</span>
+            <span class="c1">#data[&quot;col18&quot;].name=&quot;sumcounts1&quot;</span>
+            <span class="c1">#data[&quot;col19&quot;].name=&quot;sumcounts2&quot;</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;metstarttime&quot;</span><span class="p">]</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">dwell_seq_nums</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dwellseqnum&quot;</span><span class="p">]</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">dwell_ids</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dwellnum&quot;</span><span class="p">]</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;RXTEMissionTable read complete&quot;</span><span class="p">)</span>
+        
+            <span class="k">return</span> <span class="bp">cls</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39; does not exist&#39;</span><span class="p">)</span>
+            <span class="k">return</span></div>
+
+<div class="viewcode-block" id="RXTEMissionTable.get_dwell_ids"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_ids">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_dwell_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">t0</span><span class="p">):</span>
+        <span class="c1">#this part selects the record corresponding to t0. I need to figure out how to do error handling</span>
+        <span class="c1">#if t0 is not found in the file.</span>
+        <span class="c1">#inputs: t0 (float) - trigger time</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">t0</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">t0</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">+</span><span class="mi">90</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;t0 = &#39;</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span> <span class="s1">&#39;is &gt; 90 s from asm dwell start times.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Nearest dwell: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">t0</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)),</span> <span class="s1">&#39;s from t0&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">dwell_seq_nums</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">dwell_ids</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sel_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="n">sel_dwell_seq_nums</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dwell_seq_nums</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="n">sel_dwell_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dwell_ids</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">sel_times</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sel_dwell_seq_nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sel_dwell_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+    
+<div class="viewcode-block" id="RXTEMissionTable.get_dwell_file"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_dwell_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="n">dirname</span><span class="p">):</span>
+        <span class="c1">#this parses the file name for the dwell file for a given t0</span>
+        <span class="c1">#need to figure out error handling if t0 not found</span>
+        <span class="c1">#inputs:</span>
+        <span class="c1">#t0 (float) trigger time</span>
+        <span class="c1">#filename (str) dwell file name </span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
+            <span class="n">dwell_start_time</span><span class="p">,</span><span class="n">dwell_seq_no</span><span class="p">,</span><span class="n">dwell_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dwell_ids</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dwell_start_time</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No dwell files found&#39;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1">#Figure out where the dwell time falls within the directory structure from Ron Remillard</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">99999999</span><span class="p">):</span> 
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_dwasc_01&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;amts&#39;</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&gt;</span> <span class="mi">99999999</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">160000000</span><span class="p">):</span>
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_dwasc_02&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;amts&#39;</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&gt;</span> <span class="mi">160000000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">226105000</span><span class="p">):</span>
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_dwasc_03&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;amts&#39;</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&gt;</span> <span class="mi">226105000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">300000000</span><span class="p">):</span>
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_evasc_01&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;ev&#39;</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&gt;</span> <span class="mi">300000000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">400000000</span><span class="p">):</span>
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_evasc_02&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;ev&#39;</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&gt;</span> <span class="mi">400000000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">500000000</span><span class="p">):</span>
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_evasc_039&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;ev&#39;</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&gt;</span> <span class="mi">500000000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">600000000</span><span class="p">):</span>
+                    <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_evasc_04&#39;</span>
+                    <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;ev&#39;</span>
+                <span class="k">else</span><span class="p">:</span> <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;dwell_seq_no&#39;</span><span class="p">,</span> <span class="n">dwell_seq_no</span><span class="p">,</span> <span class="s1">&#39;not found&#39;</span><span class="p">)</span>
+                <span class="c1">#construct dwell_filename (str)</span>
+                <span class="k">if</span> <span class="n">dwell_id</span> <span class="o">&lt;</span><span class="mi">10</span><span class="p">:</span> 
+                    <span class="n">dwell_filename</span> <span class="o">=</span> <span class="n">dirname</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">dwell_subdir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">dwell_file_start_str</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dwell_seq_no</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dwell_id</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">dwell_filename</span> <span class="o">=</span> <span class="n">dirname</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">dwell_subdir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">dwell_file_start_str</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dwell_seq_no</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dwell_id</span><span class="p">)</span>
+     
+                <span class="k">return</span> <span class="n">dwell_filename</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="s1">&#39;does not exist&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">()</span></div></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+
+
+<form action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right"> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright .<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

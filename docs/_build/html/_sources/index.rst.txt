@@ -65,9 +65,9 @@ RXTE ASM Definitions
 .. toctree::
    :maxdepth: 1
 
-   missions/rxte/time
-   missions/rxte/missiontable
-   missions/rxte/phaii
+   missions/rxte/asm/time
+   missions/rxte/asm/missiontable
+   missions/rxte/asm/phaii
 
 *******
 License

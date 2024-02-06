@@ -1,0 +1,663 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>RxtePhaiiNoHeaders &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" href="../_static/override.css" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/gdt_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Apache License" href="../license.html" />
+    <link rel="prev" title="RXTE ASM PHAII Data (gdt.missions.rxte.phaii)" href="../missions/rxte/asm/phaii.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">gdt</span><span id="logotext2">-fermi</span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../license.html" title="Apache License">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="../missions/rxte/asm/phaii.html" title="RXTE ASM PHAII Data (gdt.missions.rxte.phaii)">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">The Gamma-ray Data Tools 1.0.0 documentation</a>
+	 &#187;
+      </li>
+      <li><a href="../missions/rxte/asm/phaii.html" accesskey="U">RXTE ASM PHAII Data (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.phaii</span></code>)</a> &#187;</li>
+      
+      <li>RxtePhaiiNoHeaders</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="rxtephaiinoheaders">
+<h1>RxtePhaiiNoHeaders<a class="headerlink" href="#rxtephaiinoheaders" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gdt.missions.rxte.asm.phaii.</span></span><span class="sig-name descname"><span class="pre">RxtePhaiiNoHeaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/phaii.html#RxtePhaiiNoHeaders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/api/gdt.core.phaii.Phaii.html#gdt.core.phaii.Phaii" title="(in The Gamma-ray Data Tools v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code></a></p>
+<p class="rubric">Attributes Summary</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.data" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<td><p>The PHAII data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ebounds</span></code></a></p></td>
+<td><p>The energy-channel mapping</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.energy_range" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.energy_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_range</span></code></a></p></td>
+<td><p>The energy range of the data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.filename" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.filename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filename</span></code></a></p></td>
+<td><p>The filename</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.gti" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.gti"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gti</span></code></a></p></td>
+<td><p>The good time intervals</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.hdulist" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.hdulist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hdulist</span></code></a></p></td>
+<td><p>The list of Header Data Units</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.headers" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.headers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">headers</span></code></a></p></td>
+<td><p>The headers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_chans" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_chans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_chans</span></code></a></p></td>
+<td><p>The number of energy channels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_hdus" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_hdus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_hdus</span></code></a></p></td>
+<td><p>The number of HDUs</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.time_range" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.time_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_range</span></code></a></p></td>
+<td><p>The time range of the data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.trigtime" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.trigtime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trigtime</span></code></a></p></td>
+<td><p>The trigger time of the data, if available.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Summary</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.close" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<td><p>Close the file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.column" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">column</span></code></a>(hdu_num, col_name)</p></td>
+<td><p>Return a column from an HDU as an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.columns_as_array" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.columns_as_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">columns_as_array</span></code></a>(hdu_num, col_names[, dtype])</p></td>
+<td><p>Return a list of columns from an HDU as an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.from_data" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_data</span></code></a>(data[, gti, trigger_time, ...])</p></td>
+<td><p>Create a PHAII object from a <code class="xref py py-class docutils literal notranslate"><span class="pre">TimeEnergyBins</span></code> data object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_column_names" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_column_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_column_names</span></code></a>(hdu_num)</p></td>
+<td><p>Get the column names in a HDU.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_exposure" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_exposure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_exposure</span></code></a>([time_ranges])</p></td>
+<td><p>Calculate the total exposure of a time range or time ranges of data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.merge" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge</span></code></a>(phaii_list)</p></td>
+<td><p>Merge a list of Phaii objects into a new Phaii object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(file_path[, mode, memmap])</p></td>
+<td><p>Open a FITS file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_ascii</span></code></a>(filename, detector, t0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_fits</span></code></a>(filename, detector, t0, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebin_energy</span></code></a>(method, *args[, energy_range])</p></td>
+<td><p>Rebin the PHAII in energy given a rebinning method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_time" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebin_time</span></code></a>(method, *args[, time_range])</p></td>
+<td><p>Rebin the PHAII in time given a rebinning method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_energy" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slice_energy</span></code></a>(energy_ranges, **kwargs)</p></td>
+<td><p>Slice the PHAII by one or more energy range.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_time" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slice_time</span></code></a>(time_ranges, **kwargs)</p></td>
+<td><p>Slice the PHAII by one or more time range.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_lightcurve" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_lightcurve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_lightcurve</span></code></a>([time_range, energy_range, ...])</p></td>
+<td><p>Integrate the PHAII data over energy to produce a lightcurve</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_pha" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_pha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pha</span></code></a>([time_ranges, energy_range, ...])</p></td>
+<td><p>Integrate the PHAII data over time to produce a PHA object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_spectrum" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spectrum</span></code></a>([time_range, energy_range, ...])</p></td>
+<td><p>Integrate the PHAII data over time to produce a count spectrum</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.write" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(directory[, filename])</p></td>
+<td><p>Write the file to disk.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>The PHAII data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeEnergyBins</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector">
+<span class="sig-name descname"><span class="pre">detector</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds">
+<span class="sig-name descname"><span class="pre">ebounds</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>The energy-channel mapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Ebounds</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.energy_range">
+<span class="sig-name descname"><span class="pre">energy_range</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.energy_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>The energy range of the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>The filename</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.gti">
+<span class="sig-name descname"><span class="pre">gti</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.gti" title="Permalink to this definition">¶</a></dt>
+<dd><p>The good time intervals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Gti</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.hdulist">
+<span class="sig-name descname"><span class="pre">hdulist</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.hdulist" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of Header Data Units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(astropy.io.fits.hdu.HDUList)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.headers">
+<span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>The headers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/api/gdt.core.headers.FileHeaders.html#gdt.core.headers.FileHeaders" title="(in The Gamma-ray Data Tools v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileHeaders</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_chans">
+<span class="sig-name descname"><span class="pre">num_chans</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_chans" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of energy channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_hdus">
+<span class="sig-name descname"><span class="pre">num_hdus</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.num_hdus" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of HDUs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.time_range">
+<span class="sig-name descname"><span class="pre">time_range</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.time_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>The time range of the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.trigtime">
+<span class="sig-name descname"><span class="pre">trigtime</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.trigtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>The trigger time of the data, if available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods Documentation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.column">
+<span class="sig-name descname"><span class="pre">column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdu_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a column from an HDU as an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hdu_num</strong> (<em>int</em>) – The HDU number</p></li>
+<li><p><strong>col_name</strong> (<em>str</em>) – The name of the column</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(np.array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.columns_as_array">
+<span class="sig-name descname"><span class="pre">columns_as_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdu_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dtype</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.columns_as_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of columns from an HDU as an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hdu_num</strong> (<em>int</em>) – The HDU number</p></li>
+<li><p><strong>col_names</strong> (<em>list of str</em>) – The names of the columns</p></li>
+<li><p><strong>dtype</strong> (<em>np.dtype</em><em>, </em><em>optional</em>) – The custom dtype of the output array</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(np.array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.from_data">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gti</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigger_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a PHAII object from a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeEnergyBins</span></code> data object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeEnergyBins</span></code>) – The PHAII data</p></li>
+<li><p><strong>gti</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Gti</span></code>, optional) – The Good Time Intervals object. If omitted, the GTI spans
+(tstart, tstop)</p></li>
+<li><p><strong>trigger_time</strong> (<em>float</em><em>, </em><em>optional</em>) – The trigger time, if applicable. If provided, the data times
+will be shifted relative to the trigger time.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the file</p></li>
+<li><p><strong>headers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">FileHeaders</span></code>) – The file headers</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_column_names">
+<span class="sig-name descname"><span class="pre">get_column_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdu_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_column_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the column names in a HDU.  Returns empty if there is no data
+extension in the HDU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hdu_num</strong> (<em>int</em>) – The HDU number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_exposure">
+<span class="sig-name descname"><span class="pre">get_exposure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.get_exposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total exposure of a time range or time ranges of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time_ranges</strong> (<em>[</em><em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>...</em><em>]</em><em>, </em><em>optional</em>) – The time range or time ranges over which to calculate the
+exposure. If omitted, calculates the total exposure of the data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.merge">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phaii_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a list of Phaii objects into a new Phaii object.  The header
+from the first Phaii in the list is used in the new Phaii and
+appropriately updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>phaii_list</strong> (<em>list</em>) – The list of Phaii objects to merge</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'readonly'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a FITS file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – The file path</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – The file access mode</p></li>
+<li><p><strong>memmap</strong> (<em>bool</em>) – If True, memory map when reading the file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">FitsFileContextManager</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_ascii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/phaii.html#RxtePhaiiNoHeaders.open_ascii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_fits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/phaii.html#RxtePhaiiNoHeaders.open_fits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy">
+<span class="sig-name descname"><span class="pre">rebin_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebin the PHAII in energy given a rebinning method.
+Produces a new PHAII object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>&lt;function&gt;</em>) – The rebinning function</p></li>
+<li><p><strong>*args</strong> – Arguments to be passed to the rebinning function</p></li>
+<li><p><strong>energy_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The starting and ending energy to rebin.  If omitted, uses the
+full range of data.  Setting start or end to <code class="docutils literal notranslate"><span class="pre">None</span></code> will use
+the data from the beginning or end of the data, respectively.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns</dt><dd><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_time">
+<span class="sig-name descname"><span class="pre">rebin_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebin the PHAII in time given a rebinning method.
+Produces a new PHAII object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>&lt;function&gt;</em>) – The rebinning function</p></li>
+<li><p><strong>*args</strong> – Arguments to be passed to the rebinning function</p></li>
+<li><p><strong>time_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The starting and ending time to rebin.  If omitted, uses the
+full range of data.  Setting start or end to <code class="docutils literal notranslate"><span class="pre">None</span></code> will use
+the data from the beginning or end of the data, respectively.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns</dt><dd><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_energy">
+<span class="sig-name descname"><span class="pre">slice_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_ranges</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice the PHAII by one or more energy range. Produces a new
+PHAII object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>energy_ranges</strong> (<em>[</em><em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>...</em><em>]</em>) – The energy ranges to slice the data to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_time">
+<span class="sig-name descname"><span class="pre">slice_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_ranges</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.slice_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice the PHAII by one or more time range. Produces a new
+PHAII object. The GTI will be automatically update to match the new
+time range(s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time_ranges</strong> (<em>[</em><em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>...</em><em>]</em>) – The time ranges to slice the data to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Phaii</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_lightcurve">
+<span class="sig-name descname"><span class="pre">to_lightcurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_lightcurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrate the PHAII data over energy to produce a lightcurve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The time range of the lightcurve. If omitted, uses the entire
+time range of the data.</p></li>
+<li><p><strong>energy_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The energy range of the lightcurve. If omitted, uses the entire
+energy range of the data.</p></li>
+<li><p><strong>channel_range</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em><em>, </em><em>optional</em>) – The channel range of the lightcurve. If omitted, uses the entire
+energy range of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeBins</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_pha">
+<span class="sig-name descname"><span class="pre">to_pha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_pha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrate the PHAII data over time to produce a PHA object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_ranges</strong> (<em>[</em><em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>...</em><em>]</em><em>, </em><em>optional</em>) – The time range of the spectrum. If omitted, uses the entire
+time range of the data.</p></li>
+<li><p><strong>energy_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The energy range of the spectrum. If omitted, uses the entire
+energy range of the data.</p></li>
+<li><p><strong>channel_range</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em><em>, </em><em>optional</em>) – The channel range of the spectrum. If omitted, uses the entire
+energy range of the data.</p></li>
+<li><p><strong>**kwargs</strong> – Options passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">pha.Pha.from_data()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Pha</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_spectrum">
+<span class="sig-name descname"><span class="pre">to_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.to_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrate the PHAII data over time to produce a count spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The time range of the spectrum. If omitted, uses the entire
+time range of the data.</p></li>
+<li><p><strong>energy_range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – The energy range of the spectrum. If omitted, uses the entire
+energy range of the data.</p></li>
+<li><p><strong>channel_range</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em><em>, </em><em>optional</em>) – The channel range of the spectrum. If omitted, uses the entire
+energy range of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyBins</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the file to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory</strong> (<em>str</em>) – The directory to write the file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – The filename.  If omitted, attempts to use
+the <code class="xref py py-attr docutils literal notranslate"><span class="pre">filename</span></code>
+if set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">RxtePhaiiNoHeaders</a></li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../missions/rxte/asm/phaii.html"
+                          title="previous chapter">RXTE ASM PHAII Data (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.phaii</span></code>)</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../license.html"
+                          title="next chapter">Apache License</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/api/gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright .<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

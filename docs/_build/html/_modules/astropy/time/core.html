@@ -1980,7 +1980,7 @@
                     <span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="Time.now"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.now">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Time.now"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.now">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">now</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a new object corresponding to the instant in time this</span>
@@ -2004,7 +2004,7 @@
 
     <span class="n">info</span> <span class="o">=</span> <span class="n">TimeInfo</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Time.strptime"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.strptime">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Time.strptime"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.strptime">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">strptime</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">time_string</span><span class="p">,</span> <span class="n">format_string</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parse a string to a Time according to a format specification.</span>
@@ -2059,7 +2059,7 @@
 
         <span class="k">return</span> <span class="n">out</span></div>
 
-<div class="viewcode-block" id="Time.strftime"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.strftime">[docs]</a>    <span class="k">def</span> <span class="nf">strftime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">):</span>
+<div class="viewcode-block" id="Time.strftime"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.strftime">[docs]</a>    <span class="k">def</span> <span class="nf">strftime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Convert Time to a string or a numpy.array of strings according to a</span>
 <span class="sd">        format specification.</span>
@@ -2107,7 +2107,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">formatted_strings</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Time.light_travel_time"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.light_travel_time">[docs]</a>    <span class="k">def</span> <span class="nf">light_travel_time</span><span class="p">(</span>
+<div class="viewcode-block" id="Time.light_travel_time"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.light_travel_time">[docs]</a>    <span class="k">def</span> <span class="nf">light_travel_time</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">skycoord</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barycentric&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ephemeris</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Light travel time correction to the barycentre or heliocentre.</span>
@@ -2204,7 +2204,7 @@
         <span class="n">tcor_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">spos</span> <span class="o">*</span> <span class="n">cpos</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">c</span>
         <span class="k">return</span> <span class="n">TimeDelta</span><span class="p">(</span><span class="n">tcor_val</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;tdb&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Time.earth_rotation_angle"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.earth_rotation_angle">[docs]</a>    <span class="k">def</span> <span class="nf">earth_rotation_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Time.earth_rotation_angle"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.earth_rotation_angle">[docs]</a>    <span class="k">def</span> <span class="nf">earth_rotation_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate local Earth rotation angle.</span>
 
 <span class="sd">        Parameters</span>
@@ -2258,7 +2258,7 @@
             <span class="n">include_tio</span><span class="o">=</span><span class="n">include_tio</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Time.sidereal_time"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.sidereal_time">[docs]</a>    <span class="k">def</span> <span class="nf">sidereal_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Time.sidereal_time"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.sidereal_time">[docs]</a>    <span class="k">def</span> <span class="nf">sidereal_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate sidereal time.</span>
 
 <span class="sd">        Parameters</span>
@@ -2421,7 +2421,7 @@
 
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="Time.get_delta_ut1_utc"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.get_delta_ut1_utc">[docs]</a>    <span class="k">def</span> <span class="nf">get_delta_ut1_utc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iers_table</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_status</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Time.get_delta_ut1_utc"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.get_delta_ut1_utc">[docs]</a>    <span class="k">def</span> <span class="nf">get_delta_ut1_utc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iers_table</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_status</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Find UT1 - UTC differences by interpolating in IERS Table.</span>
 
 <span class="sd">        Parameters</span>
@@ -2688,7 +2688,7 @@
     <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Time.mean"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Time.mean"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
         <span class="k">if</span> <span class="n">scale</span> <span class="o">==</span> <span class="s2">&quot;utc&quot;</span><span class="p">:</span>
             <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tai</span>
@@ -2754,7 +2754,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__array_function__</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Time.to_datetime"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.time.Time.html#gdt.missions.rxte.time.Time.to_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">to_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timezone</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Time.to_datetime"><a class="viewcode-back" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time.to_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">to_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timezone</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># TODO: this could likely go through to_value, as long as that</span>
         <span class="c1"># had an **kwargs part that was just passed on to _time.</span>
         <span class="n">tm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replicate</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">)</span>
