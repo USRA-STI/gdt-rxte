@@ -1,34 +1,37 @@
-# CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT WITH UNLIMITED RIGHTS
+# CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
+# WITH UNLIMITED RIGHTS
 #
-# Contract No.: CA 80MSFC17M0022
-# Contractor Name: Universities Space Research Association
-# Contractor Address: 7178 Columbia Gateway Drive, Columbia, MD 21046
+# Developed by: Colleen A. Wilson-Hodge
+# 			    National Aeronautics and Space Administration (NASA)
+#     			Marshall Space Flight Center
+#     			Astrophysics Branch (ST-12)
 #
-# Copyright 2017-2022 by Universities Space Research Association (USRA). All rights reserved.
+# This work is a derivative of the Gamma-ray Data Tools (GDT), including the 
+# Core and Fermi packages, originally developed by the following:
 #
-# Developed by: William Cleveland and Adam Goldstein
-#               Universities Space Research Association
-#               Science and Technology Institute
-#               https://sti.usra.edu
+#     William Cleveland and Adam Goldstein
+#     Universities Space Research Association
+#     Science and Technology Institute
+#     https://sti.usra.edu
+#     
+#     Daniel Kocevski
+#     National Aeronautics and Space Administration (NASA)
+#     Marshall Space Flight Center
+#     Astrophysics Branch (ST-12)
 #
-# Developed by: Daniel Kocevski
-#               National Aeronautics and Space Administration (NASA)
-#               Marshall Space Flight Center
-#               Astrophysics Branch (ST-12)
-#
-# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
-# in compliance with the License. You may obtain a copy of the License at
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+# use this file except in compliance with the License. You may obtain a copy of 
+# the License at
 #
 #    http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software distributed under the License
-# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-# implied. See the License for the specific language governing permissions and limitations under the
-# License.
-##Make Phaii for RXTE ASM data
-# when defining in a new instrument module, do a relative import instead:
-#from ..core.data_primitives import Ebounds, Gti, TimeEnergyBins
-#from ..core.phaii import Phaii
+# Unless required by applicable law or agreed to in writing, software 
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the 
+# License for the specific language governing permissions and limitations under 
+# the License.
+#
+#Make Phaii for RXTE ASM data
 from gdt.core.data_primitives import Ebounds, Gti, TimeEnergyBins
 from gdt.core.phaii import Phaii
 from astropy.io import ascii

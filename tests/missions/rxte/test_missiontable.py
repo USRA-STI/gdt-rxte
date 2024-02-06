@@ -1,38 +1,46 @@
-# CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT WITH UNLIMITED RIGHTS
+# CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
+# WITH UNLIMITED RIGHTS
 #
-# Contract No.: CA 80MSFC17M0022
-# Contractor Name: Universities Space Research Association
-# Contractor Address: 7178 Columbia Gateway Drive, Columbia, MD 21046
+# Developed by: Colleen A. Wilson-Hodge
+# 			    National Aeronautics and Space Administration (NASA)
+#     			Marshall Space Flight Center
+#     			Astrophysics Branch (ST-12)
 #
-# Copyright 2017-2022 by Universities Space Research Association (USRA). All rights reserved.
+# This work is a derivative of the Gamma-ray Data Tools (GDT), including the 
+# Core and Fermi packages, originally developed by the following:
 #
-# Developed by: William Cleveland and Adam Goldstein
-#               Universities Space Research Association
-#               Science and Technology Institute
-#               https://sti.usra.edu
+#     William Cleveland and Adam Goldstein
+#     Universities Space Research Association
+#     Science and Technology Institute
+#     https://sti.usra.edu
+#     
+#     Daniel Kocevski
+#     National Aeronautics and Space Administration (NASA)
+#     Marshall Space Flight Center
+#     Astrophysics Branch (ST-12)
 #
-# Developed by: Daniel Kocevski
-#               National Aeronautics and Space Administration (NASA)
-#               Marshall Space Flight Center
-#               Astrophysics Branch (ST-12)
-#
-# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
-# in compliance with the License. You may obtain a copy of the License at
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+# use this file except in compliance with the License. You may obtain a copy of 
+# the License at
 #
 #    http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software distributed under the License
-# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-# implied. See the License for the specific language governing permissions and limitations under the
-# License.
+# Unless required by applicable law or agreed to in writing, software 
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the 
+# License for the specific language governing permissions and limitations under 
+# the License.
 #
 import unittest
 from gdt.missions.rxte.missiontable import RXTEMissionTable
+import os
+
+directory = os.environ['RXTE_DATA_PATH']
 
 # read in the mission table. I'm not sure how to make a test for this.
 # I'm hard coding my path at the moment to test other parts of the code. I need 
 # to fix this later before releasing. 
-asm_table_data = RXTEMissionTable.open('/Users/cwilsonh/proposals/Goldstein2021_ADAP/rxte_asm/asm_mission_pointing.table') 
+asm_table_data = RXTEMissionTable.open(os.path.join(directory,"asm_mission_pointing.table")) 
 
 #define three dwells to retrieve
 # start of first asm dwell
@@ -68,8 +76,6 @@ dwell_seq4 = 503710464
 dwell_id4 = 0
 dwell_file4 = 'cam_evasc_04/ev503710464.00'
 
-directory = '/Users/cwilsonh/proposals/Goldstein2021_ADAP/rxte_asm/camera_data'
-
 class TestMissionTable(unittest.TestCase):
     
     def test_get_dwell_ids(self):
@@ -79,7 +85,7 @@ class TestMissionTable(unittest.TestCase):
         assert RXTEMissionTable.get_dwell_ids(met4) == (dwell_start4, dwell_seq4, dwell_id4)
 
     def test_get_dwell_file(self):
-        assert RXTEMissionTable.get_dwell_file(met1, directory) == directory+'/'+dwell_file1
-        assert RXTEMissionTable.get_dwell_file(met2, directory) == directory+'/'+dwell_file2
-        assert RXTEMissionTable.get_dwell_file(met3, directory) == directory+'/'+dwell_file3
-        assert RXTEMissionTable.get_dwell_file(met4, directory) == directory+'/'+dwell_file4
+        assert RXTEMissionTable.get_dwell_file(met1, directory) == os.path.join(directory,dwell_file1)
+        assert RXTEMissionTable.get_dwell_file(met2, directory) == os.path.join(directory,dwell_file2)
+        assert RXTEMissionTable.get_dwell_file(met3, directory) == os.path.join(directory,dwell_file3)
+        assert RXTEMissionTable.get_dwell_file(met4, directory) == os.path.join(directory,dwell_file4)
