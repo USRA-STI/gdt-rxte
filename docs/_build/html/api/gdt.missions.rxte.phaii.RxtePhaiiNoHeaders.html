@@ -1,25 +1,28 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>RxtePhaiiNoHeaders &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-astropy.css?v=cfc02a30" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" href="../_static/override.css" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <link rel="icon" href="../_static/gdt_favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/gdt_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Apache License" href="../license.html" />
@@ -336,13 +339,13 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.columns_as_array">
-<span class="sig-name descname"><span class="pre">columns_as_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdu_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dtype</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.columns_as_array" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">columns_as_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdu_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dtype</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.columns_as_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of columns from an HDU as an array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>hdu_num</strong> (<em>int</em>) – The HDU number</p></li>
-<li><p><strong>col_names</strong> (<em>list</em><em> of </em><em>str</em>) – The names of the columns</p></li>
+<li><p><strong>col_names</strong> (<em>list of str</em>) – The names of the columns</p></li>
 <li><p><strong>dtype</strong> (<em>np.dtype</em><em>, </em><em>optional</em>) – The custom dtype of the output array</p></li>
 </ul>
 </dd>
@@ -423,7 +426,7 @@ appropriately updated.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'readonly'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'readonly'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a FITS file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -590,7 +593,7 @@ energy range of the data.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.write" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write the file to disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -616,42 +619,7 @@ if set.</p></li>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
 <ul>
-<li><a class="reference internal" href="#">RxtePhaiiNoHeaders</a><ul>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders</span></code></a><ul>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.data"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.data</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.detector"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.detector</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.ebounds"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.ebounds</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.energy_range"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.energy_range</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.filename"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.filename</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.gti"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.gti</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.hdulist"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.hdulist</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.headers"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.headers</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.num_chans"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.num_chans</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.num_hdus"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.num_hdus</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.time_range"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.time_range</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.trigtime"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.trigtime</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.close"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.close()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.column"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.column()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.columns_as_array"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.columns_as_array()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.from_data"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.from_data()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.get_column_names"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.get_column_names()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.get_exposure"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.get_exposure()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.merge"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.merge()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.open()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open_ascii"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.open_ascii()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open_fits"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.open_fits()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.rebin_energy"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.rebin_energy()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.rebin_time"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.rebin_time()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.slice_energy"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.slice_energy()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.slice_time"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.slice_time()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.to_lightcurve"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.to_lightcurve()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.to_pha"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.to_pha()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.to_spectrum"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.to_spectrum()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.write"><code class="docutils literal notranslate"><span class="pre">RxtePhaiiNoHeaders.write()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">RxtePhaiiNoHeaders</a></li>
 </ul>
 
 
@@ -688,7 +656,7 @@ if set.</p></li>
     <a href="#">Back to Top</a></p>
   <p>
     &copy; Copyright .<br/>
-    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
   </p>
 </footer>
   </body>

@@ -1,25 +1,28 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Time &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-astropy.css?v=cfc02a30" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" href="../_static/override.css" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <link rel="icon" href="../_static/gdt_favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/gdt_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="RXTE ASM Data Finders (gdt.missions.rxte.missiontable)" href="../missions/rxte/missiontable.html" />
@@ -456,7 +459,7 @@ is used.  See <code class="xref py py-func docutils literal notranslate"><span c
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.time.Time.argsort">
-<span class="sig-name descname"><span class="pre">argsort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.time.Time.argsort" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">argsort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.time.Time.argsort" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the indices that would sort the time array.</p>
 <p>This is similar to <code class="xref py py-meth docutils literal notranslate"><span class="pre">argsort()</span></code>, but adapted to ensure
 that the full precision given by the two doubles <code class="docutils literal notranslate"><span class="pre">jd1</span></code> and <code class="docutils literal notranslate"><span class="pre">jd2</span></code>
@@ -691,7 +694,7 @@ only; it has no meaning for <cite>Time</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>axis</strong> (<em>None</em><em> or </em><em>int</em><em> or </em><em>tuple</em><em> of </em><em>ints</em><em>, </em><em>optional</em>) – Axis or axes along which the means are computed. The default is to
+<li><p><strong>axis</strong> (<em>None</em><em> or </em><em>int</em><em> or </em><em>tuple of ints</em><em>, </em><em>optional</em>) – Axis or axes along which the means are computed. The default is to
 compute the mean of the flattened array.</p></li>
 <li><p><strong>dtype</strong> (<em>None</em>) – Only present for compatibility with <code class="xref py py-meth docutils literal notranslate"><span class="pre">mean()</span></code>,
 must be <cite>None</cite>.</p></li>
@@ -700,7 +703,7 @@ must be <cite>None</cite>.</p></li>
 <li><p><strong>keepdims</strong> (<em>bool</em><em>, </em><em>optional</em>) – If this is set to True, the axes which are reduced are left
 in the result as dimensions with size one. With this option,
 the result will broadcast correctly against the input array.</p></li>
-<li><p><strong>where</strong> (<em>array_like</em><em> of </em><em>bool</em><em>, </em><em>optional</em>) – Elements to include in the mean. See <cite>~numpy.ufunc.reduce</cite> for
+<li><p><strong>where</strong> (<em>array_like of bool</em><em>, </em><em>optional</em>) – Elements to include in the mean. See <cite>~numpy.ufunc.reduce</cite> for
 details.</p></li>
 </ul>
 </dd>
@@ -852,7 +855,7 @@ corrected for polar motion (except when <code class="docutils literal notranslat
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.time.Time.sort">
-<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.time.Time.sort" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gdt.missions.rxte.time.Time.sort" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy sorted along the specified axis.</p>
 <p>This is similar to <code class="xref py py-meth docutils literal notranslate"><span class="pre">sort()</span></code>, but internally uses
 indexing with <code class="xref py py-func docutils literal notranslate"><span class="pre">lexsort()</span></code> to ensure that the full precision
@@ -1017,67 +1020,7 @@ data are views of the data of the original.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
 <ul>
-<li><a class="reference internal" href="#">Time</a><ul>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time"><code class="docutils literal notranslate"><span class="pre">Time</span></code></a><ul>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.FORMATS"><code class="docutils literal notranslate"><span class="pre">Time.FORMATS</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.SCALES"><code class="docutils literal notranslate"><span class="pre">Time.SCALES</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.T"><code class="docutils literal notranslate"><span class="pre">Time.T</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.cache"><code class="docutils literal notranslate"><span class="pre">Time.cache</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.delta_tdb_tt"><code class="docutils literal notranslate"><span class="pre">Time.delta_tdb_tt</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.delta_ut1_utc"><code class="docutils literal notranslate"><span class="pre">Time.delta_ut1_utc</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.format"><code class="docutils literal notranslate"><span class="pre">Time.format</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.in_subfmt"><code class="docutils literal notranslate"><span class="pre">Time.in_subfmt</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.info"><code class="docutils literal notranslate"><span class="pre">Time.info</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.isscalar"><code class="docutils literal notranslate"><span class="pre">Time.isscalar</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.jd1"><code class="docutils literal notranslate"><span class="pre">Time.jd1</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.jd2"><code class="docutils literal notranslate"><span class="pre">Time.jd2</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.mask"><code class="docutils literal notranslate"><span class="pre">Time.mask</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.masked"><code class="docutils literal notranslate"><span class="pre">Time.masked</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.ndim"><code class="docutils literal notranslate"><span class="pre">Time.ndim</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.out_subfmt"><code class="docutils literal notranslate"><span class="pre">Time.out_subfmt</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.precision"><code class="docutils literal notranslate"><span class="pre">Time.precision</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.rxte_mission_day"><code class="docutils literal notranslate"><span class="pre">Time.rxte_mission_day</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.rxte_mission_week"><code class="docutils literal notranslate"><span class="pre">Time.rxte_mission_week</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.scale"><code class="docutils literal notranslate"><span class="pre">Time.scale</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.sct"><code class="docutils literal notranslate"><span class="pre">Time.sct</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.shape"><code class="docutils literal notranslate"><span class="pre">Time.shape</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.size"><code class="docutils literal notranslate"><span class="pre">Time.size</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.value"><code class="docutils literal notranslate"><span class="pre">Time.value</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.writeable"><code class="docutils literal notranslate"><span class="pre">Time.writeable</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.argmax"><code class="docutils literal notranslate"><span class="pre">Time.argmax()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.argmin"><code class="docutils literal notranslate"><span class="pre">Time.argmin()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.argsort"><code class="docutils literal notranslate"><span class="pre">Time.argsort()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.copy"><code class="docutils literal notranslate"><span class="pre">Time.copy()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.diagonal"><code class="docutils literal notranslate"><span class="pre">Time.diagonal()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.earth_rotation_angle"><code class="docutils literal notranslate"><span class="pre">Time.earth_rotation_angle()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.flatten"><code class="docutils literal notranslate"><span class="pre">Time.flatten()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.get_delta_ut1_utc"><code class="docutils literal notranslate"><span class="pre">Time.get_delta_ut1_utc()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.insert"><code class="docutils literal notranslate"><span class="pre">Time.insert()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.isclose"><code class="docutils literal notranslate"><span class="pre">Time.isclose()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.light_travel_time"><code class="docutils literal notranslate"><span class="pre">Time.light_travel_time()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.max"><code class="docutils literal notranslate"><span class="pre">Time.max()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.mean"><code class="docutils literal notranslate"><span class="pre">Time.mean()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.min"><code class="docutils literal notranslate"><span class="pre">Time.min()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.now"><code class="docutils literal notranslate"><span class="pre">Time.now()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.ptp"><code class="docutils literal notranslate"><span class="pre">Time.ptp()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.ravel"><code class="docutils literal notranslate"><span class="pre">Time.ravel()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.replicate"><code class="docutils literal notranslate"><span class="pre">Time.replicate()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.reshape"><code class="docutils literal notranslate"><span class="pre">Time.reshape()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.sidereal_time"><code class="docutils literal notranslate"><span class="pre">Time.sidereal_time()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.sort"><code class="docutils literal notranslate"><span class="pre">Time.sort()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.squeeze"><code class="docutils literal notranslate"><span class="pre">Time.squeeze()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.strftime"><code class="docutils literal notranslate"><span class="pre">Time.strftime()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.strptime"><code class="docutils literal notranslate"><span class="pre">Time.strptime()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.swapaxes"><code class="docutils literal notranslate"><span class="pre">Time.swapaxes()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.take"><code class="docutils literal notranslate"><span class="pre">Time.take()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.to_datetime"><code class="docutils literal notranslate"><span class="pre">Time.to_datetime()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.to_string"><code class="docutils literal notranslate"><span class="pre">Time.to_string()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.to_value"><code class="docutils literal notranslate"><span class="pre">Time.to_value()</span></code></a></li>
-<li><a class="reference internal" href="#gdt.missions.rxte.time.Time.transpose"><code class="docutils literal notranslate"><span class="pre">Time.transpose()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Time</a></li>
 </ul>
 
 
@@ -1114,7 +1057,7 @@ data are views of the data of the original.</p>
     <a href="#">Back to Top</a></p>
   <p>
     &copy; Copyright .<br/>
-    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
   </p>
 </footer>
   </body>

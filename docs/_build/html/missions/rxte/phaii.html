@@ -1,25 +1,28 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>RXTE ASM PHAII Data (gdt.missions.rxte.phaii) &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-astropy.css?v=cfc02a30" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" href="../../_static/override.css" type="text/css" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=af2ce170"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../_static/gdt_favicon.ico"/>
+    <link rel="shortcut icon" href="../../_static/gdt_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="RxtePhaiiNoHeaders" href="../../api/gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.html" />
@@ -80,7 +83,7 @@
 <span id="rxte-phaii"></span><h1>RXTE ASM PHAII Data (<a class="reference internal" href="#module-gdt.missions.rxte.phaii" title="gdt.missions.rxte.phaii"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.phaii</span></code></a>)<a class="headerlink" href="#rxte-asm-phaii-data-gdt-missions-rxte-phaii" title="Permalink to this heading">¶</a></h1>
 <p>The primary science data available for RXTE ASM are count rate data in 1 second bins
 in three energy bands (1.5-3, 3-5,and 5-12 keV) for each of three scanning shadow
-cameras (ssc0, ssc1, and ssc2) stored as ascii text files. Each file contains an
+cameras (ssc1, ssc2, and ssc3) stored as ascii text files. Each file contains an
 RXTE ASM dwell, approximately 90 seconds of data, for the three cameras in the three
 energy bands. These data can be read into a phaii class using the open_fits method
 to allow all the phaii functionality from gdt.core to be used, for example making
@@ -111,9 +114,9 @@ another mission</p>
 </div>
 </dd>
 <dt>Now we are ready to fill the phaii class with the data:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.missions.rxte.phaii</span> <span class="kn">import</span> <span class="n">RxtePhaiiNoHeaders</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc0_970815_dw21</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file</span><span class="p">,</span><span class="s2">&quot;ssc0&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc1_970815_dw21</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file</span><span class="p">,</span><span class="s2">&quot;ssc1&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc2_970815_dw21</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file</span><span class="p">,</span><span class="s2">&quot;ssc2&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc3_970815_dw21</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file</span><span class="p">,</span><span class="s2">&quot;ssc3&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -123,22 +126,22 @@ this example, we will read in two more dwells and merge the data before plotting
 that we have about 270 seconds of data.</p>
 <dl>
 <dt>Read in the next dwell (t0+90s):</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file2</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="o">+</span><span class="mi">90</span><span class="p">,</span><span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">rxte</span> <span class="n">data</span><span class="o">&gt;/</span><span class="n">camera_data</span><span class="s1">&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc0_970815_dw22</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file2</span><span class="p">,</span><span class="s2">&quot;ssc0&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc1_970815_dw22</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file2</span><span class="p">,</span><span class="s2">&quot;ssc1&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc2_970815_dw22</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file2</span><span class="p">,</span><span class="s2">&quot;ssc2&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc3_970815_dw22</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file2</span><span class="p">,</span><span class="s2">&quot;ssc3&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 <dt>Read in a 3rd dwell:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file3</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="o">+</span><span class="mi">180</span><span class="p">,</span><span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">rxte</span> <span class="n">data</span><span class="o">&gt;/</span><span class="n">camera_data</span><span class="s1">&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc0_970815_dw23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file3</span><span class="p">,</span><span class="s2">&quot;ssc0&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc1_970815_dw23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file3</span><span class="p">,</span><span class="s2">&quot;ssc1&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc2_970815_dw23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file3</span><span class="p">,</span><span class="s2">&quot;ssc2&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc3_970815_dw23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_ascii</span><span class="p">(</span><span class="n">dwell_file3</span><span class="p">,</span><span class="s2">&quot;ssc3&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
-<dt>Now we can merge the three dwells:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc0_dw21to23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">phaii_ssc0_970815_dw21</span><span class="p">,</span><span class="n">phaii_ssc0_970815_dw22</span><span class="p">,</span><span class="n">phaii_ssc0_970815_dw23</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc1_dw21to23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">phaii_ssc1_970815_dw21</span><span class="p">,</span><span class="n">phaii_ssc1_970815_dw22</span><span class="p">,</span><span class="n">phaii_ssc1_970815_dw23</span><span class="p">])</span>
+<dt>Now we can merge the three dwells:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc1_dw21to23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">phaii_ssc1_970815_dw21</span><span class="p">,</span><span class="n">phaii_ssc1_970815_dw22</span><span class="p">,</span><span class="n">phaii_ssc1_970815_dw23</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc2_dw21to23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">phaii_ssc2_970815_dw21</span><span class="p">,</span><span class="n">phaii_ssc2_970815_dw22</span><span class="p">,</span><span class="n">phaii_ssc2_970815_dw23</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phaii_ssc3_dw21to23</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">phaii_ssc3_970815_dw21</span><span class="p">,</span><span class="n">phaii_ssc3_970815_dw22</span><span class="p">,</span><span class="n">phaii_ssc3_970815_dw23</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd>
@@ -149,22 +152,22 @@ light curve integrated over all three energy channels:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.core.plot.lightcurve</span> <span class="kn">import</span> <span class="n">Lightcurve</span>
 </pre></div>
 </div>
-<p>We make a plot for SSC0.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lcplot</span> <span class="o">=</span> <span class="n">Lightcurve</span><span class="p">(</span><span class="n">phaii_ssc0_dw21to23</span><span class="o">.</span><span class="n">to_lightcurve</span><span class="p">())</span>
+<p>We make a plot for SSC1.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lcplot</span> <span class="o">=</span> <span class="n">Lightcurve</span><span class="p">(</span><span class="n">phaii_ssc1_dw21to23</span><span class="o">.</span><span class="n">to_lightcurve</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This plot shows the count rates from t0 to t0+180s for SSC0</p>
+<p>This plot shows the count rates from t0 to t0+180s for SSC1</p>
 <img alt="../../_images/phaii_ssc0_fig1.png" src="../../_images/phaii_ssc0_fig1.png" />
-<p>Next we plot data for SSC1</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lcplot</span> <span class="o">=</span> <span class="n">Lightcurve</span><span class="p">(</span><span class="n">phaii_ssc1_dw21to23</span><span class="o">.</span><span class="n">to_lightcurve</span><span class="p">())</span>
+<p>Next we plot data for SSC2</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lcplot</span> <span class="o">=</span> <span class="n">Lightcurve</span><span class="p">(</span><span class="n">phaii_ssc2_dw21to23</span><span class="o">.</span><span class="n">to_lightcurve</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This plot shows the count rates from t0 to t0+180 for SSC1</p>
 <img alt="../../_images/phaii_ssc1_fig2.png" src="../../_images/phaii_ssc1_fig2.png" />
-<p>Lastly we plot data for SSC2.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lcplot</span> <span class="o">=</span> <span class="n">Lightcurve</span><span class="p">(</span><span class="n">phaii_ssc2_dw21to23</span><span class="o">.</span><span class="n">to_lightcurve</span><span class="p">())</span>
+<p>Lastly we plot data for SSC3.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lcplot</span> <span class="o">=</span> <span class="n">Lightcurve</span><span class="p">(</span><span class="n">phaii_ssc3_dw21to23</span><span class="o">.</span><span class="n">to_lightcurve</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -172,15 +175,15 @@ light curve integrated over all three energy channels:</p>
 <img alt="../../_images/phaii_ssc2_fig3.png" src="../../_images/phaii_ssc2_fig3.png" />
 <p>Since reading in the RXTE ASM mission table and the many ascii files tends to be
 slow, we can write out our merged data to a fits file for later use.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phaii_ssc0_dw21to23</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;&lt;my directory&gt;&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test_rxte_phaii_ssc0_dw21to23.phaii&#39;</span><span class="p">,</span><span class="n">overwrite</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phaii_ssc1_dw21to23</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;&lt;my_directory&gt;&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test_rxte_phaii_ssc1_dw21to23.phaii&#39;</span><span class="p">,</span><span class="n">overwrite</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phaii_ssc1_dw21to23</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;&lt;my directory&gt;&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test_rxte_phaii_ssc1_dw21to23.phaii&#39;</span><span class="p">,</span><span class="n">overwrite</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phaii_ssc2_dw21to23</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;&lt;my_directory&gt;&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test_rxte_phaii_ssc2_dw21to23.phaii&#39;</span><span class="p">,</span><span class="n">overwrite</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phaii_ssc3_dw21to23</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;&lt;my_directory&gt;&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test_rxte_phaii_ssc3_dw21to23.phaii&#39;</span><span class="p">,</span><span class="n">overwrite</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We can read that data back in now or at a later time using the open_fits method:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_test0</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_fits</span><span class="p">(</span><span class="s1">&#39;&lt;my directory&gt;/test_rxte_phaii_ssc0_dw21to23.phaii&#39;</span><span class="p">,</span><span class="s2">&quot;ssc0&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_test1</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_fits</span><span class="p">(</span><span class="s1">&#39;&lt;my directory&gt;/test_rxte_phaii_ssc1_dw21to23.phaii&#39;</span><span class="p">,</span><span class="s2">&quot;ssc1&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_test1</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_fits</span><span class="p">(</span><span class="s1">&#39;&lt;my directory&gt;/test_rxte_phaii_ssc1_dw21to23.phaii&#39;</span><span class="p">,</span><span class="s2">&quot;ssc1&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_test2</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_fits</span><span class="p">(</span><span class="s1">&#39;&lt;my directory&gt;/test_rxte_phaii_ssc2_dw21to23.phaii&#39;</span><span class="p">,</span><span class="s2">&quot;ssc2&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_test3</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_fits</span><span class="p">(</span><span class="s1">&#39;&lt;my directory&gt;/test_rxte_phaii_ssc3_dw21to23.phaii&#39;</span><span class="p">,</span><span class="s2">&quot;ssc3&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>See <a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/plot/lightcurve.html#plot-lightcurve" title="(in The Gamma-ray Data Tools v2.0.2)"><span class="xref std std-ref">Plotting Lightcurves</span></a> and
@@ -278,7 +281,7 @@ size=&quot;8.0, 12.0&quot;;
     <a href="#">Back to Top</a></p>
   <p>
     &copy; Copyright .<br/>
-    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
   </p>
 </footer>
   </body>

@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,18 +8,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gdt.missions.rxte.phaii &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/bootstrap-astropy.css?v=cfc02a30" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
     <link rel="stylesheet" href="../../../../_static/override.css" type="text/css" />
     
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=af2ce170"></script>
-    <script src="../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script type="text/javascript" src="../../../../_static/sidebar.js"></script>
     <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../../../_static/gdt_favicon.ico"/>
+    <link rel="shortcut icon" href="../../../../_static/gdt_favicon.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
@@ -64,37 +67,40 @@
           <div class="body" role="main">
             
   <h1>Source code for gdt.missions.rxte.phaii</h1><div class="highlight"><pre>
-<span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT WITH UNLIMITED RIGHTS</span>
+<span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT </span>
+<span class="c1"># WITH UNLIMITED RIGHTS</span>
 <span class="c1">#</span>
-<span class="c1"># Contract No.: CA 80MSFC17M0022</span>
-<span class="c1"># Contractor Name: Universities Space Research Association</span>
-<span class="c1"># Contractor Address: 7178 Columbia Gateway Drive, Columbia, MD 21046</span>
+<span class="c1"># Developed by: Colleen A. Wilson-Hodge</span>
+<span class="c1"># 			    National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#     			Marshall Space Flight Center</span>
+<span class="c1">#     			Astrophysics Branch (ST-12)</span>
 <span class="c1">#</span>
-<span class="c1"># Copyright 2017-2022 by Universities Space Research Association (USRA). All rights reserved.</span>
+<span class="c1"># This work is a derivative of the Gamma-ray Data Tools (GDT), including the </span>
+<span class="c1"># Core and Fermi packages, originally developed by the following:</span>
 <span class="c1">#</span>
-<span class="c1"># Developed by: William Cleveland and Adam Goldstein</span>
-<span class="c1">#               Universities Space Research Association</span>
-<span class="c1">#               Science and Technology Institute</span>
-<span class="c1">#               https://sti.usra.edu</span>
+<span class="c1">#     William Cleveland and Adam Goldstein</span>
+<span class="c1">#     Universities Space Research Association</span>
+<span class="c1">#     Science and Technology Institute</span>
+<span class="c1">#     https://sti.usra.edu</span>
+<span class="c1">#     </span>
+<span class="c1">#     Daniel Kocevski</span>
+<span class="c1">#     National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#     Marshall Space Flight Center</span>
+<span class="c1">#     Astrophysics Branch (ST-12)</span>
 <span class="c1">#</span>
-<span class="c1"># Developed by: Daniel Kocevski</span>
-<span class="c1">#               National Aeronautics and Space Administration (NASA)</span>
-<span class="c1">#               Marshall Space Flight Center</span>
-<span class="c1">#               Astrophysics Branch (ST-12)</span>
-<span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
-<span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not </span>
+<span class="c1"># use this file except in compliance with the License. You may obtain a copy of </span>
+<span class="c1"># the License at</span>
 <span class="c1">#</span>
 <span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c1">#</span>
-<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed under the License</span>
-<span class="c1"># is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or</span>
-<span class="c1"># implied. See the License for the specific language governing permissions and limitations under the</span>
-<span class="c1"># License.</span>
-<span class="c1">##Make Phaii for RXTE ASM data</span>
-<span class="c1"># when defining in a new instrument module, do a relative import instead:</span>
-<span class="c1">#from ..core.data_primitives import Ebounds, Gti, TimeEnergyBins</span>
-<span class="c1">#from ..core.phaii import Phaii</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software </span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT </span>
+<span class="c1"># WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the </span>
+<span class="c1"># License for the specific language governing permissions and limitations under </span>
+<span class="c1"># the License.</span>
+<span class="c1">#</span>
+<span class="c1">#Make Phaii for RXTE ASM data</span>
 <span class="kn">from</span> <span class="nn">gdt.core.data_primitives</span> <span class="kn">import</span> <span class="n">Ebounds</span><span class="p">,</span> <span class="n">Gti</span><span class="p">,</span> <span class="n">TimeEnergyBins</span>
 <span class="kn">from</span> <span class="nn">gdt.core.phaii</span> <span class="kn">import</span> <span class="n">Phaii</span>
 <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">ascii</span>
@@ -112,14 +118,14 @@
         
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">detector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#returns the user input value of detector. It should be ssc0, ssc1, or ssc2</span>
+        <span class="c1">#returns the user input value of detector. It should be ssc1, ssc2, or ssc3</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detector</span>
     
 <div class="viewcode-block" id="RxtePhaiiNoHeaders.open_ascii"><a class="viewcode-back" href="../../../../api/gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.html#gdt.missions.rxte.phaii.RxtePhaiiNoHeaders.open_ascii">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">open_ascii</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">t0</span><span class="p">):</span>
         <span class="c1">#inputs</span>
         <span class="c1">#filename (str) - name of dwell file including path</span>
-        <span class="c1">#detector (str) - detector name: ssc0, ssc1, or ssc2</span>
+        <span class="c1">#detector (str) - detector name: ssc1, ssc2, or ssc3</span>
 	<span class="c1">#t0 - (float) trigger time in met</span>
         			    
         <span class="n">obj</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
@@ -135,18 +141,18 @@
 	    <span class="c1">#first column is spacecraft time (MET-3.37s)</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sct&quot;</span>
             <span class="c1">#second column is count rate in 1.5-3 keV band for ssc0</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc0a&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc1a&quot;</span>
             <span class="c1">#third column is count rate in 3-5 keV band for ssc0</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc0b&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc1b&quot;</span>
             <span class="c1">#fourth column is count rate in 5-12 keV band for ssc0</span>
 	    <span class="c1"># pattern repeats with columns 5-7 corresponding to the three bands in ssc1 and 8-10 for the three bands in ssc2</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc0c&quot;</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col5&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc1a&quot;</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col6&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc1b&quot;</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col7&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc1c&quot;</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col8&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc2a&quot;</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col9&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc2b&quot;</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc2c&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc1c&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col5&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc2a&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col6&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc2b&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col7&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc2c&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col8&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc3a&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col9&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc3b&quot;</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc3c&quot;</span>
             <span class="c1"># RXTE ASM has fixed energy bounds 1.5-3, 3-5, 5-12 keV for all three detectors.</span>
             <span class="c1"># obj._ebounds = Ebounds.from_bounds(emin, emax) </span>
             <span class="n">emin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">])</span>
@@ -155,15 +161,15 @@
             <span class="c1"># arrange RXTE ASM data into TimeEnergyBins inputs</span>
             <span class="c1"># obj._data = TimeEnergyBins(counts, tstart, tstop, exposure,</span>
             <span class="c1">#                            emin, emax, quality=quality)</span>
-            <span class="k">if</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc0&quot;</span><span class="p">:</span>
-                <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc0a&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc0b&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc0c&quot;</span><span class="p">]]))</span>
-            <span class="k">elif</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc1&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc1&quot;</span><span class="p">:</span>
                 <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc1a&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc1b&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc1c&quot;</span><span class="p">]]))</span>
             <span class="k">elif</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc2&quot;</span><span class="p">:</span>
                 <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc2a&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc2b&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc2c&quot;</span><span class="p">]]))</span>
+            <span class="k">elif</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc3&quot;</span><span class="p">:</span>
+                <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc3a&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc3b&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc3c&quot;</span><span class="p">]]))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1">#check if detector input correctly</span>
-                <span class="nb">print</span> <span class="p">(</span><span class="n">detector</span><span class="p">,</span><span class="s1">&#39; not found. Input ssc0, ssc1, or ssc2&#39;</span><span class="p">)</span>
+                <span class="nb">print</span> <span class="p">(</span><span class="n">detector</span><span class="p">,</span><span class="s1">&#39; not found. Input ssc1, ssc2, or ssc3&#39;</span><span class="p">)</span>
                 <span class="k">return</span>
             <span class="c1">#define times in MET with 1 second long bins</span>
             <span class="n">tstart</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;sct&quot;</span><span class="p">]])</span><span class="o">+</span><span class="mf">3.37843167</span><span class="o">-</span><span class="n">t0</span>
@@ -177,6 +183,7 @@
             <span class="n">obj</span><span class="o">.</span><span class="n">_gti</span> <span class="o">=</span> <span class="n">Gti</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">tstart</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">tstop</span><span class="p">))</span>
             <span class="c1"># set _detector to input detector value</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">_detector</span> <span class="o">=</span> <span class="n">detector</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">_trigtime</span> <span class="o">=</span> <span class="n">t0</span>
             <span class="k">return</span> <span class="n">obj</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1">#Error handling - inform user that file is not found and return nothing.</span>
@@ -262,7 +269,6 @@
             <span class="c1">#obj = fits.open(filename)</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">filename</span>
        
-
             <span class="c1"># the channel energy bounds</span>
             <span class="n">ebounds</span> <span class="o">=</span> <span class="n">Ebounds</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MIN&#39;</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MAX&#39;</span><span class="p">))</span>
             <span class="c1"># the 2D time-channel counts data</span>
@@ -271,15 +277,16 @@
             
             <span class="n">exposure</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_assert_exposure</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;EXPOSURE&#39;</span><span class="p">))</span>
             
-            <span class="n">data</span> <span class="o">=</span> <span class="n">TimeEnergyBins</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;COUNTS&#39;</span><span class="p">),</span> <span class="n">time</span><span class="p">,</span> <span class="n">endtime</span><span class="p">,</span> <span class="n">exposure</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MIN&#39;</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MAX&#39;</span><span class="p">))</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">TimeEnergyBins</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;COUNTS&#39;</span><span class="p">),</span> <span class="n">time</span><span class="o">-</span><span class="n">t0</span><span class="p">,</span> <span class="n">endtime</span><span class="o">-</span><span class="n">t0</span><span class="p">,</span> <span class="n">exposure</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MIN&#39;</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MAX&#39;</span><span class="p">))</span>
 
             <span class="c1"># the good time intervals</span>
             <span class="n">gti_start</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;START&#39;</span><span class="p">)</span>
             <span class="n">gti_stop</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;STOP&#39;</span><span class="p">)</span>
             <span class="n">gti</span> <span class="o">=</span> <span class="n">Gti</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">gti_start</span><span class="p">,</span> <span class="n">gti_stop</span><span class="p">)</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">detector</span><span class="o">=</span><span class="n">detector</span>
             <span class="n">class_</span> <span class="o">=</span> <span class="bp">cls</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">class_</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gti</span><span class="o">=</span><span class="n">gti</span><span class="p">,</span> <span class="n">trigger_time</span><span class="o">=</span><span class="n">t0</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="n">detector</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">class_</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gti</span><span class="o">=</span><span class="n">gti</span><span class="p">,</span> <span class="n">trigger_time</span><span class="o">=</span><span class="n">t0</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1">#Error handling - inform user that file is not found and return nothing.</span>
             <span class="nb">print</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39; not found.&#39;</span><span class="p">)</span>
@@ -308,7 +315,7 @@
     <a href="#">Back to Top</a></p>
   <p>
     &copy; Copyright .<br/>
-    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
   </p>
 </footer>
   </body>

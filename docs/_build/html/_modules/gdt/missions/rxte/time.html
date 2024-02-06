@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,18 +8,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gdt.missions.rxte.time &#8212; The Gamma-ray Data Tools 1.0.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/bootstrap-astropy.css?v=cfc02a30" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bootstrap-astropy.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
     <link rel="stylesheet" href="../../../../_static/override.css" type="text/css" />
     
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=af2ce170"></script>
-    <script src="../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script type="text/javascript" src="../../../../_static/sidebar.js"></script>
     <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../../../_static/gdt_favicon.ico"/>
+    <link rel="shortcut icon" href="../../../../_static/gdt_favicon.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
@@ -64,35 +67,39 @@
           <div class="body" role="main">
             
   <h1>Source code for gdt.missions.rxte.time</h1><div class="highlight"><pre>
-<span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT WITH UNLIMITED RIGHTS</span>
+<span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT </span>
+<span class="c1"># WITH UNLIMITED RIGHTS</span>
 <span class="c1">#</span>
-<span class="c1"># Contract No.: CA 80MSFC17M0022</span>
-<span class="c1"># Contractor Name: Universities Space Research Association</span>
-<span class="c1"># Contractor Address: 7178 Columbia Gateway Drive, Columbia, MD 21046</span>
+<span class="c1"># Developed by: Colleen A. Wilson-Hodge</span>
+<span class="c1"># 			    National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#     			Marshall Space Flight Center</span>
+<span class="c1">#     			Astrophysics Branch (ST-12)</span>
 <span class="c1">#</span>
-<span class="c1"># Copyright 2017-2022 by Universities Space Research Association (USRA). All rights reserved.</span>
+<span class="c1"># This work is a derivative of the Gamma-ray Data Tools (GDT), including the </span>
+<span class="c1"># Core and Fermi packages, originally developed by the following:</span>
 <span class="c1">#</span>
-<span class="c1"># Developed by: William Cleveland and Adam Goldstein</span>
-<span class="c1">#               Universities Space Research Association</span>
-<span class="c1">#               Science and Technology Institute</span>
-<span class="c1">#               https://sti.usra.edu</span>
+<span class="c1">#     William Cleveland and Adam Goldstein</span>
+<span class="c1">#     Universities Space Research Association</span>
+<span class="c1">#     Science and Technology Institute</span>
+<span class="c1">#     https://sti.usra.edu</span>
+<span class="c1">#     </span>
+<span class="c1">#     Daniel Kocevski</span>
+<span class="c1">#     National Aeronautics and Space Administration (NASA)</span>
+<span class="c1">#     Marshall Space Flight Center</span>
+<span class="c1">#     Astrophysics Branch (ST-12)</span>
 <span class="c1">#</span>
-<span class="c1"># Developed by: Daniel Kocevski</span>
-<span class="c1">#               National Aeronautics and Space Administration (NASA)</span>
-<span class="c1">#               Marshall Space Flight Center</span>
-<span class="c1">#               Astrophysics Branch (ST-12)</span>
-<span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
-<span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not </span>
+<span class="c1"># use this file except in compliance with the License. You may obtain a copy of </span>
+<span class="c1"># the License at</span>
 <span class="c1">#</span>
 <span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c1">#</span>
-<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed under the License</span>
-<span class="c1"># is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or</span>
-<span class="c1"># implied. See the License for the specific language governing permissions and limitations under the</span>
-<span class="c1"># License.</span>
-<span class="c1">##this will be part of time.py</span>
-
+<span class="c1"># Unless required by applicable law or agreed to in writing, software </span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT </span>
+<span class="c1"># WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the </span>
+<span class="c1"># License for the specific language governing permissions and limitations under </span>
+<span class="c1"># the License.</span>
+<span class="c1"># </span>
 <span class="kn">from</span> <span class="nn">astropy.time</span> <span class="kn">import</span> <span class="n">TimeFromEpoch</span><span class="p">,</span> <span class="n">TimeUnique</span><span class="p">,</span> <span class="n">ScaleValueError</span><span class="p">,</span> <span class="n">Time</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RxteSecTime&#39;</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]</span>
@@ -134,9 +141,9 @@
     
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rxte_mission_week</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Return the RXTE mission week - this is computed in MJD based on an e-mail from </span>
-        <span class="c1"># Ron Remillard on Mar-2-2022. This is used if xapt files are retrieved from the HEASARC. </span>
-        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">mjd</span><span class="o">-</span><span class="mf">50115.0</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span></div>
+        <span class="c1"># Return the RXTE mission week - this is computed in MJD based on the short term short form timelines </span>
+	<span class="c1"># available through the RXTE GOF. Mission week 0 started on 1996-Jan-26</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">mjd</span><span class="o">-</span><span class="mf">50108.0</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span></div>
 	    
  
 </pre></div>
@@ -163,7 +170,7 @@
     <a href="#">Back to Top</a></p>
   <p>
     &copy; Copyright .<br/>
-    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 7.1.2. &nbsp;
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 5.0.2. &nbsp;
   </p>
 </footer>
   </body>
