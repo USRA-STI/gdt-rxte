@@ -141,27 +141,24 @@
 <td><p>Decimal precision when outputting seconds as floating point (int value between 0 and 9 inclusive).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.rxte_mission_day" title="gdt.missions.rxte.asm.time.Time.rxte_mission_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rxte_mission_day</span></code></a></p></td>
-<td><p></p></td>
+<td><p>RXTE mission day - this needs to be in Spacecraft time to match the dwell sequence</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.rxte_mission_week" title="gdt.missions.rxte.asm.time.Time.rxte_mission_week"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rxte_mission_week</span></code></a></p></td>
-<td><p></p></td>
+<td><p>RXTE mission week - this is computed in MJD based on the short term short form timelines  available through the RXTE GOF.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.scale" title="gdt.missions.rxte.asm.time.Time.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Time scale</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.sct" title="gdt.missions.rxte.asm.time.Time.sct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sct</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.shape" title="gdt.missions.rxte.asm.time.Time.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.shape" title="gdt.missions.rxte.asm.time.Time.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
 <td><p>The shape of the time instances.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.size" title="gdt.missions.rxte.asm.time.Time.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.size" title="gdt.missions.rxte.asm.time.Time.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
 <td><p>The size of the object, as calculated from its shape.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.value" title="gdt.missions.rxte.asm.time.Time.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.value" title="gdt.missions.rxte.asm.time.Time.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a></p></td>
 <td><p>Time value(s) in current format</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.writeable" title="gdt.missions.rxte.asm.time.Time.writeable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.time.Time.writeable" title="gdt.missions.rxte.asm.time.Time.writeable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeable</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -380,23 +377,21 @@ value between 0 and 9 inclusive).</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.time.Time.rxte_mission_day">
 <span class="sig-name descname"><span class="pre">rxte_mission_day</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.time.Time.rxte_mission_day" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>RXTE mission day - this needs to be in Spacecraft time to match the dwell sequence</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.time.Time.rxte_mission_week">
 <span class="sig-name descname"><span class="pre">rxte_mission_week</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.time.Time.rxte_mission_week" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>RXTE mission week - this is computed in MJD based on the short term short form
+timelines  available through the RXTE GOF. Mission week 0 started on 1996-Jan-26</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.time.Time.scale">
 <span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.time.Time.scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time scale</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="gdt.missions.rxte.asm.time.Time.sct">
-<span class="sig-name descname"><span class="pre">sct</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.time.Time.sct" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.time.Time.shape">

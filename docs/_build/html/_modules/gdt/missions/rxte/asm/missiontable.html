@@ -70,6 +70,10 @@
 <span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT </span>
 <span class="c1"># WITH UNLIMITED RIGHTS</span>
 <span class="c1">#</span>
+<span class="c1"># Grant No.: 80NSSC21K0651</span>
+<span class="c1"># Grantee Name: Universities Space Research Association</span>
+<span class="c1"># Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024</span>
+<span class="c1">#</span>
 <span class="c1"># Developed by: Colleen A. Wilson-Hodge</span>
 <span class="c1"># 			    National Aeronautics and Space Administration (NASA)</span>
 <span class="c1">#     			Marshall Space Flight Center</span>
@@ -114,28 +118,12 @@
 <div class="viewcode-block" id="RXTEMissionTable.open"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.open">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">filename</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-            <span class="c1">#open ascii table</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;open ascii table&quot;&quot;&quot;</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;no_header&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s&#39;</span><span class="p">,</span><span class="n">guess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fast_reader</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="c1">#rename columns</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;metstarttime&quot;</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dwellseqnum&quot;</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dwellnum&quot;</span>
-            <span class="c1">#data[3].name=&quot;exposssc0&quot;</span>
-            <span class="c1">#data[4].name=&quot;exposssc1&quot;</span>
-            <span class="c1">#data[5].name=&quot;exposssc2&quot;</span>
-            <span class="c1">#data[6].name=&quot;rassc0&quot;</span>
-            <span class="c1">#data[7].name=&quot;decssc0&quot;</span>
-            <span class="c1">#data[8].name=&quot;posangssc0&quot;</span>
-            <span class="c1">#data[9].name=&quot;rassc1&quot;</span>
-            <span class="c1">#data[10].name=&quot;decssc1&quot;</span>
-            <span class="c1">#data[11].name=&quot;posangssc1&quot;</span>
-            <span class="c1">#data[12].name=&quot;rassc2&quot;</span>
-            <span class="c1">#data[&quot;col14&quot;].name=&quot;decssc2&quot;</span>
-            <span class="c1">#data[&quot;col15&quot;].name=&quot;posangssc2&quot;</span>
-            <span class="c1">#data[&quot;col16&quot;].name=&quot;instrumentrotang&quot;</span>
-            <span class="c1">#data[&quot;col17&quot;].name=&quot;sumcounts0&quot;</span>
-            <span class="c1">#data[&quot;col18&quot;].name=&quot;sumcounts1&quot;</span>
-            <span class="c1">#data[&quot;col19&quot;].name=&quot;sumcounts2&quot;</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;metstarttime&quot;</span><span class="p">]</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">dwell_seq_nums</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dwellseqnum&quot;</span><span class="p">]</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">dwell_ids</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dwellnum&quot;</span><span class="p">]</span>
@@ -148,9 +136,8 @@
 
 <div class="viewcode-block" id="RXTEMissionTable.get_dwell_ids"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_ids">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_dwell_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">t0</span><span class="p">):</span>
-        <span class="c1">#this part selects the record corresponding to t0. I need to figure out how to do error handling</span>
-        <span class="c1">#if t0 is not found in the file.</span>
-        <span class="c1">#inputs: t0 (float) - trigger time</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;get_dwell_ids selects the record corresponding to t0. </span>
+<span class="sd">        inputs: t0 (float) = trigger time&quot;&quot;&quot;</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">t0</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">t0</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">+</span><span class="mi">90</span><span class="p">))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;t0 = &#39;</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span> <span class="s1">&#39;is &gt; 90 s from asm dwell start times.&#39;</span><span class="p">)</span>
@@ -164,18 +151,18 @@
     
 <div class="viewcode-block" id="RXTEMissionTable.get_dwell_file"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.missiontable.RXTEMissionTable.html#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_file">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_dwell_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="n">dirname</span><span class="p">):</span>
-        <span class="c1">#this parses the file name for the dwell file for a given t0</span>
-        <span class="c1">#need to figure out error handling if t0 not found</span>
-        <span class="c1">#inputs:</span>
-        <span class="c1">#t0 (float) trigger time</span>
-        <span class="c1">#filename (str) dwell file name </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;get_dwell_file parses the file name for the dwell file for a given</span>
+<span class="sd">         t0</span>
+<span class="sd">        inputs:</span>
+<span class="sd">        t0 (float) trigger time</span>
+<span class="sd">        filename (str) dwell file name&quot;&quot;&quot;</span> 
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
             <span class="n">dwell_start_time</span><span class="p">,</span><span class="n">dwell_seq_no</span><span class="p">,</span><span class="n">dwell_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dwell_ids</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">dwell_start_time</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No dwell files found&#39;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1">#Figure out where the dwell time falls within the directory structure from Ron Remillard</span>
+                <span class="c1">#Figure out where the dwell time falls within the directory structure</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">dwell_seq_no</span> <span class="o">&lt;</span> <span class="mi">99999999</span><span class="p">):</span> 
                     <span class="n">dwell_subdir</span> <span class="o">=</span> <span class="s1">&#39;cam_dwasc_01&#39;</span>
                     <span class="n">dwell_file_start_str</span> <span class="o">=</span> <span class="s1">&#39;amts&#39;</span>

@@ -14,11 +14,11 @@ How to Install
 --------------
 
 
-The GDT-Fermi package can be installed from PyPI using:
+The GDT-RXTE package can be installed from PyPI using:
 
 .. code-block:: sh
 
-    pip install astro-gdt-fermi
+    pip install astro-gdt-rxte
     gdt-data init
 
 
@@ -36,11 +36,11 @@ download all of the test/tutorial data.  To see the list of available missions
 
     gdt-data --help
 
-If you want to download the Fermi GBM test/tutorial data only, for example:
+If you want to download the RXTE test/tutorial data only, for example:
 
 .. code-block:: sh
 
-    gdt-data download fermi-gbm
+    gdt-data download rxte-asm
 
 Or to download all of the data:
     
@@ -50,16 +50,16 @@ Or to download all of the data:
 
 The data are downloaded to a default directory. To access the data from the GDT, 
 there is a variable at the main level that stores the path dictionary for each 
-mission.  To access the Fermi GBM test data directory:
+mission.  To access the RXTE ASM test data directory:
 
     >>> from gdt.core import data_path
-    >>> gbm_path = data_path.joinpath('fermi-gbm')
+    >>> rxte_path = data_path.joinpath('rxte-asm')
 
 Once you are done using the data, you can delete the data files with the following command:
 
 .. code-block:: sh
 
-   gdt-data clean fermi-gbm
+   gdt-data clean rxte-asm
 
 or delete all of the data with:
 
@@ -71,9 +71,9 @@ or delete all of the data with:
 
 Quickstart
 ----------
-To load the GDT-Fermi package within your python environment, simply::
+To load the GDT-RXTE package within your python environment, simply::
     
-    >>> import gdt.missions.fermi as fermi
+    >>> import gdt.missions.rxte as rxte
 
 
 How to Uninstall
@@ -83,8 +83,8 @@ To uninstall:
 
 .. code-block:: sh
 
-    gdt-data clean gdt-fermi
-    pip uninstall astro-gdt-fermi
+    gdt-data clean gdt-rxte
+    pip uninstall astro-gdt-rxte
 
 There are also a number of files for the tools that are copied into your 
 ``$HOME/.gammaray_data_tools`` directory.  You can delete these files if you 

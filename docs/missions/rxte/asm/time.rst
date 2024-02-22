@@ -48,7 +48,7 @@ allows us to compute the RXTE spacecraft time, equal to the RXTE MET-RXTE clock 
 3.37843167 s, RXTE mission day, and RXTE mission week,which
 are time based and needed to identify RXTE ASM data files.
 
-    >>> rxte_met.sct
+    >>> rxte_met.rxte_sct
     114264416.62156834
     
     >>> rxte_met.rxte_mission_day

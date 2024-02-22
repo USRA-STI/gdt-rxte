@@ -70,6 +70,10 @@
 <span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT </span>
 <span class="c1"># WITH UNLIMITED RIGHTS</span>
 <span class="c1">#</span>
+<span class="c1"># Grant No.: 80NSSC21K0651</span>
+<span class="c1"># Grantee Name: Universities Space Research Association</span>
+<span class="c1"># Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024</span>
+<span class="c1">#</span>
 <span class="c1"># Developed by: Colleen A. Wilson-Hodge</span>
 <span class="c1"># 			    National Aeronautics and Space Administration (NASA)</span>
 <span class="c1">#     			Marshall Space Flight Center</span>
@@ -118,15 +122,16 @@
         
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">detector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#returns the user input value of detector. It should be ssc1, ssc2, or ssc3</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the user input value of detector. It should be </span>
+<span class="sd">        ssc1, ssc2, or ssc3&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detector</span>
     
 <div class="viewcode-block" id="RxtePhaiiNoHeaders.open_ascii"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.html#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">open_ascii</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">t0</span><span class="p">):</span>
-        <span class="c1">#inputs</span>
-        <span class="c1">#filename (str) - name of dwell file including path</span>
-        <span class="c1">#detector (str) - detector name: ssc1, ssc2, or ssc3</span>
-	<span class="c1">#t0 - (float) trigger time in met</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;inputs</span>
+<span class="sd">        filename (str) - name of dwell file including path</span>
+<span class="sd">        detector (str) - detector name: ssc1, ssc2, or ssc3</span>
+<span class="sd">	t0 - (float) trigger time in met&quot;&quot;&quot;</span>
         			    
         <span class="n">obj</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
         <span class="c1">#check if filename exists	</span>
@@ -134,8 +139,7 @@
             <span class="c1">#if the filename exisits then open it</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">filename</span>
 
-            <span class="c1"># open and read the text table of ASM dwell information</span>
-            <span class="c1"># ...</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot; open and read the text table of ASM dwell information&quot;&quot;&quot;</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
             <span class="c1">#rename colimns</span>
 	    <span class="c1">#first column is spacecraft time (MET-3.37s)</span>
@@ -154,7 +158,6 @@
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col9&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc3b&quot;</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ssc3c&quot;</span>
             <span class="c1"># RXTE ASM has fixed energy bounds 1.5-3, 3-5, 5-12 keV for all three detectors.</span>
-            <span class="c1"># obj._ebounds = Ebounds.from_bounds(emin, emax) </span>
             <span class="n">emin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">])</span>
             <span class="n">emax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">])</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">_ebounds</span> <span class="o">=</span> <span class="n">Ebounds</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">emin</span><span class="p">,</span> <span class="n">emax</span><span class="p">)</span>
@@ -192,20 +195,20 @@
 	    
     <span class="k">def</span> <span class="nf">_build_hdulist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="c1"># create FITS and primary header</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;create FITS and primary header&quot;&quot;&quot;</span>
         <span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">HDUList</span><span class="p">()</span>
         <span class="n">primary_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">()</span>
         <span class="n">hdulist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">primary_hdu</span><span class="p">)</span>
-        
-        <span class="c1"># the ebounds extension</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; create the ebounds extension&quot;&quot;&quot;</span>
         <span class="n">ebounds_hdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ebounds_table</span><span class="p">()</span>
         <span class="n">hdulist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ebounds_hdu</span><span class="p">)</span>
-        
-        <span class="c1"># the spectrum extension</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;create the spectrum extension&quot;&quot;&quot;</span>
         <span class="n">spectrum_hdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spectrum_table</span><span class="p">()</span>
         <span class="n">hdulist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spectrum_hdu</span><span class="p">)</span>        
-        
-        <span class="c1"># the GTI extension</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; create the GTI extension&quot;&quot;&quot;</span>
         <span class="n">gti_hdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gti_table</span><span class="p">()</span>
         <span class="n">hdulist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gti_hdu</span><span class="p">)</span>
         
@@ -258,9 +261,10 @@
         <span class="k">return</span> <span class="n">hdu</span>
 
 <div class="viewcode-block" id="RxtePhaiiNoHeaders.open_fits"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.html#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">open_fits</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="c1">#inputs</span>
-        <span class="c1">#filename (str) - name of dwell file including path</span>
+    <span class="k">def</span> <span class="nf">open_fits</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;reads fits file created by gdt-rxte</span>
+<span class="sd">        inputs</span>
+<span class="sd">        filename (str) - name of dwell file including path&quot;&quot;&quot;</span>
                 			    
         <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1">#check if filename exists	</span>

@@ -91,8 +91,8 @@
 </div>
 <section id="how-to-install">
 <h2>How to Install<a class="headerlink" href="#how-to-install" title="Permalink to this heading">¶</a></h2>
-<p>The GDT-Fermi package can be installed from PyPI using:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>astro-gdt-fermi
+<p>The GDT-RXTE package can be installed from PyPI using:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>astro-gdt-rxte
 gdt-data<span class="w"> </span>init
 </pre></div>
 </div>
@@ -106,8 +106,8 @@ download all of the test/tutorial data.  To see the list of available missions</
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>--help
 </pre></div>
 </div>
-<p>If you want to download the Fermi GBM test/tutorial data only, for example:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>download<span class="w"> </span>fermi-gbm
+<p>If you want to download the RXTE test/tutorial data only, for example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>download<span class="w"> </span>rxte-asm
 </pre></div>
 </div>
 <p>Or to download all of the data:</p>
@@ -116,13 +116,13 @@ download all of the test/tutorial data.  To see the list of available missions</
 </div>
 <p>The data are downloaded to a default directory. To access the data from the GDT,
 there is a variable at the main level that stores the path dictionary for each
-mission.  To access the Fermi GBM test data directory:</p>
+mission.  To access the RXTE ASM test data directory:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.core</span> <span class="kn">import</span> <span class="n">data_path</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gbm_path</span> <span class="o">=</span> <span class="n">data_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;fermi-gbm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_path</span> <span class="o">=</span> <span class="n">data_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;rxte-asm&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Once you are done using the data, you can delete the data files with the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>clean<span class="w"> </span>fermi-gbm
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>clean<span class="w"> </span>rxte-asm
 </pre></div>
 </div>
 <p>or delete all of the data with:</p>
@@ -133,16 +133,16 @@ mission.  To access the Fermi GBM test data directory:</p>
 <hr class="docutils" />
 <section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h2>
-<p>To load the GDT-Fermi package within your python environment, simply:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gdt.missions.fermi</span> <span class="k">as</span> <span class="nn">fermi</span>
+<p>To load the GDT-RXTE package within your python environment, simply:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gdt.missions.rxte</span> <span class="k">as</span> <span class="nn">rxte</span>
 </pre></div>
 </div>
 </section>
 <section id="how-to-uninstall">
 <h2>How to Uninstall<a class="headerlink" href="#how-to-uninstall" title="Permalink to this heading">¶</a></h2>
 <p>To uninstall:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>clean<span class="w"> </span>gdt-fermi
-pip<span class="w"> </span>uninstall<span class="w"> </span>astro-gdt-fermi
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdt-data<span class="w"> </span>clean<span class="w"> </span>gdt-rxte
+pip<span class="w"> </span>uninstall<span class="w"> </span>astro-gdt-rxte
 </pre></div>
 </div>
 <p>There are also a number of files for the tools that are copied into your

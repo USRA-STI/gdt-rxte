@@ -1,6 +1,10 @@
 # CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
 # WITH UNLIMITED RIGHTS
 #
+# Grant No.: 80NSSC21K0651
+# Grantee Name: Universities Space Research Association
+# Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024
+#
 # Developed by: Colleen A. Wilson-Hodge
 # 			    National Aeronautics and Space Administration (NASA)
 #     			Marshall Space Flight Center
@@ -45,28 +49,12 @@ class RXTEMissionTable():
     @classmethod
     def open(cls,filename):
         if os.path.isfile(filename):
-            #open ascii table
+            """open ascii table"""
             data = ascii.read(filename, format='no_header',delimiter='\s',guess=False,fast_reader=True)
             #rename columns
             data["col1"].name="metstarttime"
             data["col2"].name="dwellseqnum"
             data["col3"].name="dwellnum"
-            #data[3].name="exposssc0"
-            #data[4].name="exposssc1"
-            #data[5].name="exposssc2"
-            #data[6].name="rassc0"
-            #data[7].name="decssc0"
-            #data[8].name="posangssc0"
-            #data[9].name="rassc1"
-            #data[10].name="decssc1"
-            #data[11].name="posangssc1"
-            #data[12].name="rassc2"
-            #data["col14"].name="decssc2"
-            #data["col15"].name="posangssc2"
-            #data["col16"].name="instrumentrotang"
-            #data["col17"].name="sumcounts0"
-            #data["col18"].name="sumcounts1"
-            #data["col19"].name="sumcounts2"
             cls.times = data["metstarttime"]
             cls.dwell_seq_nums = data["dwellseqnum"]
             cls.dwell_ids = data["dwellnum"]
@@ -79,9 +67,8 @@ class RXTEMissionTable():
 
     @classmethod
     def get_dwell_ids(self,t0):
-        #this part selects the record corresponding to t0. I need to figure out how to do error handling
-        #if t0 is not found in the file.
-        #inputs: t0 (float) - trigger time
+        """get_dwell_ids selects the record corresponding to t0. 
+        inputs: t0 (float) = trigger time"""
         mask = ((t0>self.times)&(t0<self.times+90))
         if self.times[mask].size == 0:
             print ('t0 = ',t0, 'is > 90 s from asm dwell start times.')
@@ -95,18 +82,18 @@ class RXTEMissionTable():
     
     @classmethod
     def get_dwell_file(self,t0,dirname):
-        #this parses the file name for the dwell file for a given t0
-        #need to figure out error handling if t0 not found
-        #inputs:
-        #t0 (float) trigger time
-        #filename (str) dwell file name 
+        """get_dwell_file parses the file name for the dwell file for a given
+         t0
+        inputs:
+        t0 (float) trigger time
+        filename (str) dwell file name""" 
         if os.path.isdir(dirname):
             dwell_start_time,dwell_seq_no,dwell_id = self.get_dwell_ids(t0)
             if dwell_start_time.size == 0:
                 print ('No dwell files found')
                 return ()
             else:
-                #Figure out where the dwell time falls within the directory structure from Ron Remillard
+                #Figure out where the dwell time falls within the directory structure
                 if (dwell_seq_no < 99999999): 
                     dwell_subdir = 'cam_dwasc_01'
                     dwell_file_start_str = 'amts'

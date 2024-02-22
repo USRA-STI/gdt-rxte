@@ -70,6 +70,10 @@
 <span></span><span class="c1"># CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT </span>
 <span class="c1"># WITH UNLIMITED RIGHTS</span>
 <span class="c1">#</span>
+<span class="c1"># Grant No.: 80NSSC21K0651</span>
+<span class="c1"># Grantee Name: Universities Space Research Association</span>
+<span class="c1"># Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024</span>
+<span class="c1">#</span>
 <span class="c1"># Developed by: Colleen A. Wilson-Hodge</span>
 <span class="c1"># 			    National Aeronautics and Space Administration (NASA)</span>
 <span class="c1">#     			Marshall Space Flight Center</span>
@@ -105,7 +109,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RxteSecTime&#39;</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="RxteSecTime"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.time.RxteSecTime.html#gdt.missions.rxte.asm.time.RxteSecTime">[docs]</a><span class="k">class</span> <span class="nc">RxteSecTime</span><span class="p">(</span><span class="n">TimeFromEpoch</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s &quot;&quot;&quot;</span>
     
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;rxte&#39;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;(str): Name of the mision&quot;&quot;&quot;</span>    
@@ -129,20 +133,19 @@
 <div class="viewcode-block" id="Time"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time">[docs]</a><span class="k">class</span> <span class="nc">Time</span><span class="p">(</span><span class="n">AstropyTime</span><span class="p">):</span>    
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">sct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Return the spacecraft time (used for dwell file names) corresponding to the met</span>
+    <span class="k">def</span> <span class="nf">rxte_sct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;RXTE spacecraft time (used for dwell file names) corresponding to the met&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rxte</span> <span class="o">-</span> <span class="mf">3.37843167</span>
 	
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rxte_mission_day</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Return the RXTE mission day - this needs to be in Spacecraft time to match the </span>
-        <span class="c1"># dwell sequence</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;RXTE mission day - this needs to be in Spacecraft time to match the dwell sequence&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sct</span><span class="p">)</span><span class="o">/</span><span class="mi">86400</span><span class="p">)</span>
     
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rxte_mission_week</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Return the RXTE mission week - this is computed in MJD based on the short term short form timelines </span>
-	<span class="c1"># available through the RXTE GOF. Mission week 0 started on 1996-Jan-26</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;RXTE mission week - this is computed in MJD based on the short term short form</span>
+<span class="sd">         timelines  available through the RXTE GOF. Mission week 0 started on 1996-Jan-26&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">mjd</span><span class="o">-</span><span class="mf">50108.0</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span></div>
 	    
  

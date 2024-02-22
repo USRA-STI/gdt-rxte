@@ -1,6 +1,10 @@
 # CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
 # WITH UNLIMITED RIGHTS
 #
+# Grant No.: 80NSSC21K0651
+# Grantee Name: Universities Space Research Association
+# Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024
+#
 # Developed by: Colleen A. Wilson-Hodge
 # 			    National Aeronautics and Space Administration (NASA)
 #     			Marshall Space Flight Center
@@ -62,9 +66,6 @@ class TestRxtePhaii(unittest.TestCase):
     def test_filename(self):
         self.assertEqual(self.phaii.filename, test_dwell_file)
     
-#    def test_headers(self):
-#        self.assertEqual(self.phaii.headers.num_headers, 4)
-    
     def test_num_chans(self):
         self.assertEqual(self.phaii.num_chans, 3)
 
@@ -78,9 +79,6 @@ class TestRxtePhaii(unittest.TestCase):
     def test_trigtime(self):
         self.assertAlmostEqual(self.phaii.trigtime, 72245338.62156843, places=6)     
         
-#    def test_rebin_energy(self):
-#        phaii2 = self.phaii.rebin_energy(combine_by_factor, 2)
-#        self.assertEqual(phaii2.num_chans, self.phaii.num_chans//2)
     
     def test_rebin_time(self):
         phaii2 = self.phaii.rebin_time(combine_by_factor, 2)

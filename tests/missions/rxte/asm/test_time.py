@@ -1,6 +1,10 @@
 # CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
 # WITH UNLIMITED RIGHTS
 #
+# Grant No.: 80NSSC21K0651
+# Grantee Name: Universities Space Research Association
+# Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024
+#
 # Developed by: Colleen A. Wilson-Hodge
 # 			    National Aeronautics and Space Administration (NASA)
 #     			Marshall Space Flight Center
@@ -86,17 +90,17 @@ class TestTime(unittest.TestCase):
         self.assertAlmostEqual(Time(mjd2, format='mjd', scale='tt').rxte, met2, 3)
         self.assertAlmostEqual(Time(mjd3, format='mjd', scale='tt').rxte, met3, 3)
         
-    def test_to_sct(self):
-        assert Time(met1, format='rxte').sct == sct1
-        assert Time(met2, format='rxte').sct == sct2
-        assert Time(met3, format='rxte').sct == sct3
+    def test_to_rxte_sct(self):
+        assert Time(met1, format='rxte').rxte_sct == sct1
+        assert Time(met2, format='rxte').rxte_sct == sct2
+        assert Time(met3, format='rxte').rxte_sct == sct3
        
-    def test_to_mission_week(self):
+    def test_to_rxte_mission_week(self):
         assert Time(met1, format='rxte').rxte_mission_week == mission_week1
         assert Time(met2, format='rxte').rxte_mission_week == mission_week2
         assert Time(met3, format='rxte').rxte_mission_week == mission_week3
          
-    def test_to_mission_day(self):
+    def test_to_rxte_mission_day(self):
         assert Time(met1, format='rxte').rxte_mission_day == mission_day1
         assert Time(met2, format='rxte').rxte_mission_day == mission_day2
         assert Time(met3, format='rxte').rxte_mission_day == mission_day3

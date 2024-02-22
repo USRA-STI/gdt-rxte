@@ -1,6 +1,10 @@
 # CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
 # WITH UNLIMITED RIGHTS
 #
+# Grant No.: 80NSSC21K0651
+# Grantee Name: Universities Space Research Association
+# Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024
+#
 # Developed by: Colleen A. Wilson-Hodge
 # 			    National Aeronautics and Space Administration (NASA)
 #     			Marshall Space Flight Center
@@ -36,7 +40,7 @@ from astropy.time import TimeFromEpoch, TimeUnique, ScaleValueError, Time
 __all__ = ['RxteSecTime', 'Time']
 
 class RxteSecTime(TimeFromEpoch):
-    """"Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s """
+    """Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s """
     
     name = 'rxte'
     """(str): Name of the mision"""    
@@ -60,20 +64,19 @@ from astropy.time import Time as AstropyTime
 class Time(AstropyTime):    
 
     @property
-    def sct(self):
-        # Return the spacecraft time (used for dwell file names) corresponding to the met
+    def rxte_sct(self):
+        """RXTE spacecraft time (used for dwell file names) corresponding to the met"""
         return self.rxte - 3.37843167
 	
     @property
     def rxte_mission_day(self):
-        # Return the RXTE mission day - this needs to be in Spacecraft time to match the 
-        # dwell sequence
-        return int((self.sct)/86400)
+        """RXTE mission day - this needs to be in Spacecraft time to match the dwell sequence"""
+        return int((self.rxte_sct)/86400)
     
     @property
     def rxte_mission_week(self):
-        # Return the RXTE mission week - this is computed in MJD based on the short term short form timelines 
-	# available through the RXTE GOF. Mission week 0 started on 1996-Jan-26
+        """RXTE mission week - this is computed in MJD based on the short term short form
+         timelines  available through the RXTE GOF. Mission week 0 started on 1996-Jan-26"""
         return int((self.mjd-50108.0)/7)
 	    
  

@@ -5,6 +5,8 @@ Welcome to RXTE ASM Gamma-ray Data Tools Documentation!
 *******************************************************
 
 .. figure:: images/xte.gif
+.. figure:: images/xte_spacecraft.gif
+
 
 The RXTE ASM Gamma-ray Data Tools (GDT) is a toolkit for RXTE ASM data built on the 
 :external:ref:`GDT Core Package<gdt-core>` and builds upon the 
@@ -28,9 +30,9 @@ suggest the following BibTex:
 ::
 
  @misc{GDT-rxte,
-       author = {Adam Goldstein and William H. Cleveland and Daniel Kocevski},
-       title = {RXTE Gamma-ray Data Tools: v2.0.0},
-       year = 2023,
+       author = {Colleen A. Wilson-Hodge and Adam Goldstein and William H. Cleveland and Daniel Kocevski},
+       title = {RXTE ASM Gamma-ray Data Tools: v2.0.0},
+       year = 2024,
        url = {https://github.com/USRA-STI/gdt-rxte}
  }
  
@@ -45,8 +47,10 @@ light curves for monitored sources and documentation can be found here
 
 .. rubric:: Acknowledgments
 
-The Fermi Gamma-ray Data Tools were partially funded by the Fermi Guest Investigator 
-program (NNH18ZDA001N) and by Cooperative Agreement 80MSFC17M0022.
+The creation of the RXTE ASM Gamma-ray Data Tools were funded by the NASA's Astrophysics Data Analysis Program
+(ADAP) via grant number 80NSSC21K0651.
+Dr. Ron Remillard (MIT) provided the RXTE ASM camera light curve files and advised us on their usage for
+the RXTE ASM Gamma-ray Data tools.
 
 ***************
 Getting Started

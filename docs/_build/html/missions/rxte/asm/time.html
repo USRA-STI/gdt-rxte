@@ -123,7 +123,7 @@ also available here.  For example, we can format the RXTE MET in ISO format:</p>
 allows us to compute the RXTE spacecraft time, equal to the RXTE MET-RXTE clock correction of
 3.37843167 s, RXTE mission day, and RXTE mission week,which
 are time based and needed to identify RXTE ASM data files.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">sct</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rxte_met</span><span class="o">.</span><span class="n">rxte_sct</span>
 <span class="go">114264416.62156834</span>
 </pre></div>
 </div>
@@ -144,7 +144,7 @@ are time based and needed to identify RXTE ASM data files.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../../api/gdt.missions.rxte.asm.time.RxteSecTime.html#gdt.missions.rxte.asm.time.RxteSecTime" title="gdt.missions.rxte.asm.time.RxteSecTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RxteSecTime</span></code></a>(val1, val2, scale, precision, ...)</p></td>
-<td><p>&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s</p></td>
+<td><p>Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../../../api/gdt.missions.rxte.asm.time.Time.html#gdt.missions.rxte.asm.time.Time" title="gdt.missions.rxte.asm.time.Time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Time</span></code></a>(val[, val2, format, scale, precision, ...])</p></td>
 <td><p></p></td>
@@ -159,7 +159,7 @@ bgcolor=transparent;
 rankdir=LR;
 size=&quot;8.0, 12.0&quot;;
   &quot;NDArrayShapeMethods&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Mixin class to provide shape-changing methods.&quot;];
-  &quot;RxteSecTime&quot; [URL=&quot;../../../api/gdt.missions.rxte.asm.time.RxteSecTime.html#gdt.missions.rxte.asm.time.RxteSecTime&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;\&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s&quot;];
+  &quot;RxteSecTime&quot; [URL=&quot;../../../api/gdt.missions.rxte.asm.time.RxteSecTime.html#gdt.missions.rxte.asm.time.RxteSecTime&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Represents the number of seconds elapsed since Jan 1, 1994 00:00:00 UTC including leap seconds and RXTE clock correction of 3.37843167E+00 s&quot;];
   &quot;TimeFromEpoch&quot; -&gt; &quot;RxteSecTime&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;ShapedLikeNDArray&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Mixin class to provide shape-changing methods.&quot;];
   &quot;NDArrayShapeMethods&quot; -&gt; &quot;ShapedLikeNDArray&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];

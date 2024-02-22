@@ -1,6 +1,10 @@
 # CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
 # WITH UNLIMITED RIGHTS
 #
+# Grant No.: 80NSSC21K0651
+# Grantee Name: Universities Space Research Association
+# Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024
+#
 # Developed by: Colleen A. Wilson-Hodge
 # 			    National Aeronautics and Space Administration (NASA)
 #     			Marshall Space Flight Center
@@ -49,15 +53,16 @@ class RxtePhaiiNoHeaders(Phaii):
         
     @property
     def detector(self):
-        #returns the user input value of detector. It should be ssc1, ssc2, or ssc3
+        """returns the user input value of detector. It should be 
+        ssc1, ssc2, or ssc3"""
         return self._detector
     
     @classmethod
     def open_ascii(cls, filename, detector, t0):
-        #inputs
-        #filename (str) - name of dwell file including path
-        #detector (str) - detector name: ssc1, ssc2, or ssc3
-	#t0 - (float) trigger time in met
+        """inputs
+        filename (str) - name of dwell file including path
+        detector (str) - detector name: ssc1, ssc2, or ssc3
+	t0 - (float) trigger time in met"""
         			    
         obj = cls()
         #check if filename exists	
@@ -65,8 +70,7 @@ class RxtePhaiiNoHeaders(Phaii):
             #if the filename exisits then open it
             obj._filename = filename
 
-            # open and read the text table of ASM dwell information
-            # ...
+            """ open and read the text table of ASM dwell information"""
             data = ascii.read(filename)
             #rename colimns
 	    #first column is spacecraft time (MET-3.37s)
@@ -85,7 +89,6 @@ class RxtePhaiiNoHeaders(Phaii):
             data["col9"].name="ssc3b"
             data["col10"].name="ssc3c"
             # RXTE ASM has fixed energy bounds 1.5-3, 3-5, 5-12 keV for all three detectors.
-            # obj._ebounds = Ebounds.from_bounds(emin, emax) 
             emin = np.array([1.5,3.0,5.0])
             emax = np.array([3.0,5.0,12.0])
             obj._ebounds = Ebounds.from_bounds(emin, emax)
@@ -123,20 +126,20 @@ class RxtePhaiiNoHeaders(Phaii):
 	    
     def _build_hdulist(self):
 
-        # create FITS and primary header
+        """create FITS and primary header"""
         hdulist = fits.HDUList()
         primary_hdu = fits.PrimaryHDU()
         hdulist.append(primary_hdu)
         
-        # the ebounds extension
+        """ create the ebounds extension"""
         ebounds_hdu = self._ebounds_table()
         hdulist.append(ebounds_hdu)
         
-        # the spectrum extension
+        """create the spectrum extension"""
         spectrum_hdu = self._spectrum_table()
         hdulist.append(spectrum_hdu)        
         
-        # the GTI extension
+        """ create the GTI extension"""
         gti_hdu = self._gti_table()
         hdulist.append(gti_hdu)
         
@@ -189,9 +192,10 @@ class RxtePhaiiNoHeaders(Phaii):
         return hdu
 
     @classmethod
-    def open_fits(cls, filename, detector, t0, **kwargs):
-        #inputs
-        #filename (str) - name of dwell file including path
+    def open_fits(cls, filename, detector=None, t0=0.0, **kwargs):
+        """reads fits file created by gdt-rxte
+        inputs
+        filename (str) - name of dwell file including path"""
                 			    
         obj = super().open(filename, **kwargs)
         #check if filename exists	

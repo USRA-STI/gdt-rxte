@@ -93,7 +93,7 @@
 <td><p>The PHAII data</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector</span></code></a></p></td>
-<td><p></p></td>
+<td><p>returns the user input value of detector.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ebounds</span></code></a></p></td>
 <td><p>The energy-channel mapping</p></td>
@@ -155,10 +155,10 @@
 <td><p>Open a FITS file.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_ascii</span></code></a>(filename, detector, t0)</p></td>
-<td><p></p></td>
+<td><p>inputs filename (str) - name of dwell file including path detector (str) - detector name: ssc1, ssc2, or ssc3 t0 - (float) trigger time in met</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_fits</span></code></a>(filename, detector, t0, **kwargs)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_fits</span></code></a>(filename[, detector, t0])</p></td>
+<td><p>reads fits file created by gdt-rxte inputs filename (str) - name of dwell file including path</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy" title="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebin_energy</span></code></a>(method, *args[, energy_range])</p></td>
 <td><p>Rebin the PHAII in energy given a rebinning method.</p></td>
@@ -201,7 +201,9 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector">
 <span class="sig-name descname"><span class="pre">detector</span></span><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.detector" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>returns the user input value of detector. It should be
+ssc1, ssc2, or ssc3</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.ebounds">
@@ -445,12 +447,19 @@ appropriately updated.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_ascii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/phaii.html#RxtePhaiiNoHeaders.open_ascii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>inputs
+filename (str) - name of dwell file including path
+detector (str) - detector name: ssc1, ssc2, or ssc3
+t0 - (float) trigger time in met</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_fits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/phaii.html#RxtePhaiiNoHeaders.open_fits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_fits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/phaii.html#RxtePhaiiNoHeaders.open_fits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits" title="Permalink to this definition">¶</a></dt>
+<dd><p>reads fits file created by gdt-rxte
+inputs
+filename (str) - name of dwell file including path</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.rebin_energy">

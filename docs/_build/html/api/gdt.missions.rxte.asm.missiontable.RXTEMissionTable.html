@@ -90,10 +90,10 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_file" title="gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dwell_file</span></code></a>(t0, dirname)</p></td>
-<td><p></p></td>
+<td><p>get_dwell_file parses the file name for the dwell file for a given</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_ids" title="gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dwell_ids</span></code></a>(t0)</p></td>
-<td><p></p></td>
+<td><p>get_dwell_ids selects the record corresponding to t0.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.open" title="gdt.missions.rxte.asm.missiontable.RXTEMissionTable.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(filename)</p></td>
 <td><p></p></td>
@@ -104,12 +104,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_file">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_dwell_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/missiontable.html#RXTEMissionTable.get_dwell_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>get_dwell_file parses the file name for the dwell file for a given</dt><dd><p>t0</p>
+</dd>
+</dl>
+<p>inputs:
+t0 (float) trigger time
+filename (str) dwell file name</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_ids">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_dwell_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gdt/missions/rxte/asm/missiontable.html#RXTEMissionTable.get_dwell_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gdt.missions.rxte.asm.missiontable.RXTEMissionTable.get_dwell_ids" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>get_dwell_ids selects the record corresponding to t0.
+inputs: t0 (float) = trigger time</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gdt.missions.rxte.asm.missiontable.RXTEMissionTable.open">
