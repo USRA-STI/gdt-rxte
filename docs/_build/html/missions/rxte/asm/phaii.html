@@ -93,7 +93,7 @@ that can be read back into a phaii class using the open_fits method.</p>
 gdt.missions.rxte.mission table.</p>
 <dl>
 <dt>First we read in the RXTE ASM mission table</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.missions.rxte.asm.missiontable</span> <span class="kn">import</span> <span class="n">RXTEMissionTable</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">asm_table_data</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;&lt;path to rxte data&gt;/asm_mission_pointing.table&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asm_table_data</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
 <span class="go">RXTEMissionTable read complete</span>
 </pre></div>
 </div>
@@ -107,9 +107,9 @@ another mission</p>
 </pre></div>
 </div>
 <dl>
-<dt>Next we find the file corresponding to that time:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="s1">&#39;&lt;path to rxte asm data&gt;&#39;</span><span class="p">)</span>
+<dt>Next we find the file corresponding to that time:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">dwell_file</span><span class="p">)</span>
-<span class="go">&lt;path to rxte asm data&gt;/cam_dwasc_02/amts114262324.21</span>
+<span class="go">/camera_data/cam_dwasc_02/amts114262324.21</span>
 </pre></div>
 </div>
 </dd>
@@ -186,11 +186,11 @@ slow, we can write out our merged data to a fits file for later use.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_test3</span> <span class="o">=</span> <span class="n">RxtePhaiiNoHeaders</span><span class="o">.</span><span class="n">open_fits</span><span class="p">(</span><span class="s1">&#39;&lt;my directory&gt;/test_rxte_phaii_ssc3_dw21to23.phaii&#39;</span><span class="p">,</span><span class="s2">&quot;ssc3&quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/plot/lightcurve.html#plot-lightcurve" title="(in The Gamma-ray Data Tools v2.0.2)"><span class="xref std std-ref">Plotting Lightcurves</span></a> and
-<a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/plot/spectrum.html#plot-spectrum" title="(in The Gamma-ray Data Tools v2.0.2)"><span class="xref std std-ref">Plotting Count Spectra</span></a> for more on
+<p>See <a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/plot/lightcurve.html#plot-lightcurve" title="(in The Gamma-ray Data Tools v2.0.4)"><span class="xref std std-ref">Plotting Lightcurves</span></a> and
+<a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/plot/spectrum.html#plot-spectrum" title="(in The Gamma-ray Data Tools v2.0.4)"><span class="xref std std-ref">Plotting Count Spectra</span></a> for more on
 how to modify these plots.</p>
 <p>For more details about working with PHAII data, see
-<a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/phaii.html#core-phaii" title="(in The Gamma-ray Data Tools v2.0.2)"><span class="xref std std-ref">PHAII Files</span></a>.</p>
+<a class="reference external" href="https://astro-gdt.readthedocs.io/en/latest/core/phaii.html#core-phaii" title="(in The Gamma-ray Data Tools v2.0.4)"><span class="xref std std-ref">PHAII Files</span></a>.</p>
 <section id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this heading">¶</a></h2>
 <section id="module-gdt.missions.rxte.asm.phaii">

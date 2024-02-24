@@ -17,7 +17,7 @@ gdt.missions.rxte.mission table.
 
 First we read in the RXTE ASM mission table
     >>> from gdt.missions.rxte.asm.missiontable import RXTEMissionTable
-    >>> asm_table_data = RXTEMissionTable.open('<path to rxte data>/asm_mission_pointing.table')
+    >>> asm_table_data = RXTEMissionTable.open()
     RXTEMissionTable read complete
         
 Next we select a time you are interested in, for example a trigger time from RXTE or 
@@ -28,9 +28,9 @@ another mission
     
 
 Next we find the file corresponding to that time:
-    >>> dwell_file = RXTEMissionTable.get_dwell_file(t0,'<path to rxte asm data>')
+    >>> dwell_file = RXTEMissionTable.get_dwell_file(t0)
     >>> print (dwell_file)
-    <path to rxte asm data>/cam_dwasc_02/amts114262324.21
+    /camera_data/cam_dwasc_02/amts114262324.21
 
 Now we are ready to fill the phaii class with the data:
     >>> from gdt.missions.rxte.asm.phaii import RxtePhaiiNoHeaders

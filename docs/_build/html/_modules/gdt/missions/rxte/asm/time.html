@@ -140,7 +140,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rxte_mission_day</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;RXTE mission day - this needs to be in Spacecraft time to match the dwell sequence&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sct</span><span class="p">)</span><span class="o">/</span><span class="mi">86400</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">rxte_sct</span><span class="p">)</span><span class="o">/</span><span class="mi">86400</span><span class="p">)</span>
     
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rxte_mission_week</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

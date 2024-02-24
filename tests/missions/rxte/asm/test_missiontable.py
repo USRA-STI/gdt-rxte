@@ -39,12 +39,8 @@ import unittest
 from gdt.missions.rxte.asm.missiontable import RXTEMissionTable
 import os
 
-directory = os.environ['RXTE_DATA_PATH']
-
-# read in the mission table. I'm not sure how to make a test for this.
-# I'm hard coding my path at the moment to test other parts of the code. I need 
-# to fix this later before releasing. 
-asm_table_data = RXTEMissionTable.open(os.path.join(directory,"asm_mission_pointing.table")) 
+# read in the mission table. 
+asm_table_data = RXTEMissionTable.open() 
 
 #define three dwells to retrieve
 # start of first asm dwell
@@ -53,7 +49,7 @@ sct1 = 63449120
 dwell_start1 = 63449088
 dwell_seq1 = 63448692
 dwell_id1 = 4
-dwell_file1 = 'cam_dwasc_01/amts63448692.04'
+dwell_file1 = 'camera_data/cam_dwasc_01/amts63448692.04'
 
 # start of last asm dwell before ev mode
 met2 = 226105491.37843168
@@ -61,7 +57,7 @@ sct2 = 226105488
 dwell_start2 = 226105488
 dwell_seq2 = 226104807
 dwell_id2 = 7
-dwell_file2 = 'cam_dwasc_03/amts226104807.07'
+dwell_file2 = 'camera_data/cam_dwasc_03/amts226104807.07'
 
 
 # start of asm ev files
@@ -70,7 +66,7 @@ sct3 = 226109232
 dwell_start3 = 226109232
 dwell_seq3 = 226109232
 dwell_id3 = 0
-dwell_file3 = 'cam_evasc_01/ev226109232.00'
+dwell_file3 = 'camera_data/cam_evasc_01/ev226109232.00'
 
 # last of asm dwell files'
 met4 = 503710467.37843168
@@ -78,7 +74,7 @@ sct4 = 503710464
 dwell_start4 = 503710464
 dwell_seq4 = 503710464
 dwell_id4 = 0
-dwell_file4 = 'cam_evasc_04/ev503710464.00'
+dwell_file4 = 'camera_data/cam_evasc_04/ev503710464.00'
 
 class TestMissionTable(unittest.TestCase):
     
@@ -89,7 +85,7 @@ class TestMissionTable(unittest.TestCase):
         assert RXTEMissionTable.get_dwell_ids(met4) == (dwell_start4, dwell_seq4, dwell_id4)
 
     def test_get_dwell_file(self):
-        assert RXTEMissionTable.get_dwell_file(met1, directory) == os.path.join(directory,dwell_file1)
-        assert RXTEMissionTable.get_dwell_file(met2, directory) == os.path.join(directory,dwell_file2)
-        assert RXTEMissionTable.get_dwell_file(met3, directory) == os.path.join(directory,dwell_file3)
-        assert RXTEMissionTable.get_dwell_file(met4, directory) == os.path.join(directory,dwell_file4)
+        assert RXTEMissionTable.get_dwell_file(met1) == dwell_file1
+        assert RXTEMissionTable.get_dwell_file(met2) == dwell_file2
+        assert RXTEMissionTable.get_dwell_file(met3) == dwell_file3
+        assert RXTEMissionTable.get_dwell_file(met4) == dwell_file4

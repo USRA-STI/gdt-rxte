@@ -39,7 +39,9 @@
 from astropy.io import ascii
 import numpy as np
 import os
-
+from gdt.core import data_path
+asm_path = data_path/'rxte-asm'
+asm_mission_table_file = os.path.join(asm_path, "camera_data","asm_mission_pointing.table")
 class RXTEMissionTable():
     def __init__(self, times, dwell_seq_nums, dwell_ids):
         self.times = times
@@ -47,10 +49,10 @@ class RXTEMissionTable():
         self.dwell_ids = dwell_ids
     
     @classmethod
-    def open(cls,filename):
-        if os.path.isfile(filename):
+    def open(cls):
+        if os.path.isfile(asm_mission_table_file):
             """open ascii table"""
-            data = ascii.read(filename, format='no_header',delimiter='\s',guess=False,fast_reader=True)
+            data = ascii.read(asm_mission_table_file, format='no_header',delimiter='\s',guess=False,fast_reader=True)
             #rename columns
             data["col1"].name="metstarttime"
             data["col2"].name="dwellseqnum"
@@ -62,7 +64,7 @@ class RXTEMissionTable():
         
             return cls
         else:
-            print (filename,' does not exist')
+            print (asm_mission_table,' does not exist')
             return
 
     @classmethod
@@ -81,13 +83,12 @@ class RXTEMissionTable():
             return (sel_times[0],sel_dwell_seq_nums[0],sel_dwell_ids[0])
     
     @classmethod
-    def get_dwell_file(self,t0,dirname):
+    def get_dwell_file(self,t0):
         """get_dwell_file parses the file name for the dwell file for a given
          t0
         inputs:
-        t0 (float) trigger time
-        filename (str) dwell file name""" 
-        if os.path.isdir(dirname):
+        t0 (float) trigger time""" 
+        if os.path.isdir(asm_path):
             dwell_start_time,dwell_seq_no,dwell_id = self.get_dwell_ids(t0)
             if dwell_start_time.size == 0:
                 print ('No dwell files found')
@@ -110,7 +111,7 @@ class RXTEMissionTable():
                     dwell_subdir = 'cam_evasc_02'
                     dwell_file_start_str = 'ev'
                 elif (dwell_seq_no > 400000000) & (dwell_seq_no < 500000000):
-                    dwell_subdir = 'cam_evasc_039'
+                    dwell_subdir = 'cam_evasc_03'
                     dwell_file_start_str = 'ev'
                 elif (dwell_seq_no > 500000000) & (dwell_seq_no < 600000000):
                     dwell_subdir = 'cam_evasc_04'
@@ -118,12 +119,16 @@ class RXTEMissionTable():
                 else: print ('dwell_seq_no', dwell_seq_no, 'not found')
                 #construct dwell_filename (str)
                 if dwell_id <10: 
-                    dwell_filename = dirname+'/'+dwell_subdir+'/'+dwell_file_start_str + str(dwell_seq_no)+'.0'+str(dwell_id)
+                    dwell_file = "{}{}.0{}".format(dwell_file_start_str,dwell_seq_no,dwell_id)
+                    dwell_filename = os.path.join("camera_data",dwell_subdir,dwell_file)
                 else:
-                    dwell_filename = dirname+'/'+dwell_subdir+'/'+dwell_file_start_str + str(dwell_seq_no)+'.'+str(dwell_id)
+                    dwell_file = "{}{}.{}".format(dwell_file_start_str,dwell_seq_no,dwell_id)
+                    dwell_filename = os.path.join("camera_data",dwell_subdir,dwell_file)
+
+ #                   dwell_filename = #dirname+'/'+dwell_subdir+'/'+dwell_file_start_str + #str(dwell_seq_no)#+'.'+str(dwell_id)
      
                 return dwell_filename
         else:
-            print (dirname, 'does not exist')
+            print (asm_path, 'does not exist')
             return ()
 

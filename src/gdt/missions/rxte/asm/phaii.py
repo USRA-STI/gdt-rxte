@@ -39,10 +39,11 @@
 from gdt.core.data_primitives import Ebounds, Gti, TimeEnergyBins
 from gdt.core.phaii import Phaii
 from astropy.io import ascii
-#from .headers import PhaiiHeaders
 import astropy.io.fits as fits
 import numpy as np
 import os
+from gdt.core import data_path
+asm_path = data_path/'rxte-asm'
 
 __all__ = ['RxtePhaiiNoHeaders']
 
@@ -58,20 +59,21 @@ class RxtePhaiiNoHeaders(Phaii):
         return self._detector
     
     @classmethod
-    def open_ascii(cls, filename, detector, t0):
+    def open_ascii(cls, dwell_filename, detector, t0):
         """inputs
-        filename (str) - name of dwell file including path
+        dwell_filename (str) - name of dwell file
         detector (str) - detector name: ssc1, ssc2, or ssc3
 	t0 - (float) trigger time in met"""
-        			    
+        			  
+        ascii_filename = os.path.join(asm_path,dwell_filename)       			   			  	  
         obj = cls()
-        #check if filename exists	
-        if os.path.isfile(filename):
-            #if the filename exisits then open it
-            obj._filename = filename
+        #check if ascii_filename exists	
+        if os.path.isfile(ascii_filename):
+            #if the filename exists then open it
+            obj._filename = ascii_filename
 
             """ open and read the text table of ASM dwell information"""
-            data = ascii.read(filename)
+            data = ascii.read(ascii_filename)
             #rename colimns
 	    #first column is spacecraft time (MET-3.37s)
             data["col1"].name="sct"
@@ -93,8 +95,6 @@ class RxtePhaiiNoHeaders(Phaii):
             emax = np.array([3.0,5.0,12.0])
             obj._ebounds = Ebounds.from_bounds(emin, emax)
             # arrange RXTE ASM data into TimeEnergyBins inputs
-            # obj._data = TimeEnergyBins(counts, tstart, tstop, exposure,
-            #                            emin, emax, quality=quality)
             if detector == "ssc1":
                 counts = np.transpose(np.array([data["ssc1a"],data["ssc1b"],data["ssc1c"]]))
             elif detector == "ssc2":
@@ -121,7 +121,7 @@ class RxtePhaiiNoHeaders(Phaii):
             return obj
         else:
             #Error handling - inform user that file is not found and return nothing.
-            print (filename,' not found.')
+            print (ascii_filename,' not found.')
             return
 	    
     def _build_hdulist(self):
@@ -192,17 +192,16 @@ class RxtePhaiiNoHeaders(Phaii):
         return hdu
 
     @classmethod
-    def open_fits(cls, filename, detector=None, t0=0.0, **kwargs):
+    def open_fits(cls, fits_filename, detector=None, t0=0.0, **kwargs):
         """reads fits file created by gdt-rxte
         inputs
         filename (str) - name of dwell file including path"""
                 			    
-        obj = super().open(filename, **kwargs)
+        obj = super().open(fits_filename, **kwargs)
         #check if filename exists	
-        if os.path.isfile(filename):
+        if os.path.isfile(fits_filename):
             #if the filename exisits then open it
-            #obj = fits.open(filename)
-            obj._filename = filename
+            obj._filename = fits_filename
        
             # the channel energy bounds
             ebounds = Ebounds.from_bounds(obj.column(1, 'E_MIN'), obj.column(1, 'E_MAX'))
@@ -224,5 +223,5 @@ class RxtePhaiiNoHeaders(Phaii):
             return class_.from_data(data, gti=gti, trigger_time=t0, filename=obj.filename)
         else:
             #Error handling - inform user that file is not found and return nothing.
-            print (filename,' not found.')
+            print (fits_filename,' not found.')
             return

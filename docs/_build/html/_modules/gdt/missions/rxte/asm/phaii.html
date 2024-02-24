@@ -108,10 +108,11 @@
 <span class="kn">from</span> <span class="nn">gdt.core.data_primitives</span> <span class="kn">import</span> <span class="n">Ebounds</span><span class="p">,</span> <span class="n">Gti</span><span class="p">,</span> <span class="n">TimeEnergyBins</span>
 <span class="kn">from</span> <span class="nn">gdt.core.phaii</span> <span class="kn">import</span> <span class="n">Phaii</span>
 <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">ascii</span>
-<span class="c1">#from .headers import PhaiiHeaders</span>
 <span class="kn">import</span> <span class="nn">astropy.io.fits</span> <span class="k">as</span> <span class="nn">fits</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">gdt.core</span> <span class="kn">import</span> <span class="n">data_path</span>
+<span class="n">asm_path</span> <span class="o">=</span> <span class="n">data_path</span><span class="o">/</span><span class="s1">&#39;rxte-asm&#39;</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RxtePhaiiNoHeaders&#39;</span><span class="p">]</span>
 
@@ -127,20 +128,21 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detector</span>
     
 <div class="viewcode-block" id="RxtePhaiiNoHeaders.open_ascii"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.html#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_ascii">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">open_ascii</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">t0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">open_ascii</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dwell_filename</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">t0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;inputs</span>
-<span class="sd">        filename (str) - name of dwell file including path</span>
+<span class="sd">        dwell_filename (str) - name of dwell file</span>
 <span class="sd">        detector (str) - detector name: ssc1, ssc2, or ssc3</span>
 <span class="sd">	t0 - (float) trigger time in met&quot;&quot;&quot;</span>
-        			    
+        			  
+        <span class="n">ascii_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">asm_path</span><span class="p">,</span><span class="n">dwell_filename</span><span class="p">)</span>       			   			  	  
         <span class="n">obj</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
-        <span class="c1">#check if filename exists	</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-            <span class="c1">#if the filename exisits then open it</span>
-            <span class="n">obj</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="c1">#check if ascii_filename exists	</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">ascii_filename</span><span class="p">):</span>
+            <span class="c1">#if the filename exists then open it</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">ascii_filename</span>
 
 <span class="w">            </span><span class="sd">&quot;&quot;&quot; open and read the text table of ASM dwell information&quot;&quot;&quot;</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ascii_filename</span><span class="p">)</span>
             <span class="c1">#rename colimns</span>
 	    <span class="c1">#first column is spacecraft time (MET-3.37s)</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;col1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sct&quot;</span>
@@ -162,8 +164,6 @@
             <span class="n">emax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">])</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">_ebounds</span> <span class="o">=</span> <span class="n">Ebounds</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">emin</span><span class="p">,</span> <span class="n">emax</span><span class="p">)</span>
             <span class="c1"># arrange RXTE ASM data into TimeEnergyBins inputs</span>
-            <span class="c1"># obj._data = TimeEnergyBins(counts, tstart, tstop, exposure,</span>
-            <span class="c1">#                            emin, emax, quality=quality)</span>
             <span class="k">if</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc1&quot;</span><span class="p">:</span>
                 <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc1a&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc1b&quot;</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ssc1c&quot;</span><span class="p">]]))</span>
             <span class="k">elif</span> <span class="n">detector</span> <span class="o">==</span> <span class="s2">&quot;ssc2&quot;</span><span class="p">:</span>
@@ -190,7 +190,7 @@
             <span class="k">return</span> <span class="n">obj</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1">#Error handling - inform user that file is not found and return nothing.</span>
-            <span class="nb">print</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39; not found.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">ascii_filename</span><span class="p">,</span><span class="s1">&#39; not found.&#39;</span><span class="p">)</span>
             <span class="k">return</span></div>
 	    
     <span class="k">def</span> <span class="nf">_build_hdulist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -261,17 +261,16 @@
         <span class="k">return</span> <span class="n">hdu</span>
 
 <div class="viewcode-block" id="RxtePhaiiNoHeaders.open_fits"><a class="viewcode-back" href="../../../../../api/gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.html#gdt.missions.rxte.asm.phaii.RxtePhaiiNoHeaders.open_fits">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">open_fits</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">open_fits</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fits_filename</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;reads fits file created by gdt-rxte</span>
 <span class="sd">        inputs</span>
 <span class="sd">        filename (str) - name of dwell file including path&quot;&quot;&quot;</span>
                 			    
-        <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fits_filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1">#check if filename exists	</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fits_filename</span><span class="p">):</span>
             <span class="c1">#if the filename exisits then open it</span>
-            <span class="c1">#obj = fits.open(filename)</span>
-            <span class="n">obj</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">filename</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">fits_filename</span>
        
             <span class="c1"># the channel energy bounds</span>
             <span class="n">ebounds</span> <span class="o">=</span> <span class="n">Ebounds</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MIN&#39;</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;E_MAX&#39;</span><span class="p">))</span>
@@ -293,7 +292,7 @@
             <span class="k">return</span> <span class="n">class_</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gti</span><span class="o">=</span><span class="n">gti</span><span class="p">,</span> <span class="n">trigger_time</span><span class="o">=</span><span class="n">t0</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1">#Error handling - inform user that file is not found and return nothing.</span>
-            <span class="nb">print</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39; not found.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">fits_filename</span><span class="p">,</span><span class="s1">&#39; not found.&#39;</span><span class="p">)</span>
             <span class="k">return</span></div></div>
 </pre></div>
 

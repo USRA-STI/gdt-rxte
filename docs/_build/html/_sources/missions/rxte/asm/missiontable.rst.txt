@@ -10,13 +10,23 @@ are stored in a consistent directory structure. But instead of having to navigat
 couple of  classes built to retrieve the data you want once you've downloaded it. RXTE ASM data is ordered 
 into dwells and dwell sequence numbers that are summarized in the mission table file.
 
+Downloading the RXTE ASM Data
+==============================
+To Download the RXTE ASM Data either for testing or for running gdt-rxte
+At the commandline
+$ gdt-data init
+$ gdt-data download rxte-asm
+
+This will download all the RXTE ASM Camera light curve data 
+
+
 Finding RXTE ASM Data
 ==========================
 
 Let's start with reading in the RXTE ASM Mission Table. Note that this table needs to be read only at the beginning of a session:
 
     >>> from gdt.missions.rxte.asm.missiontable import RXTEMissionTable
-    >>> asm_table_data = RXTEMissionTable.open('<path to rxte data>/asm_mission_pointing.table')
+    >>> asm_table_data = RXTEMissionTable.open()
     RXTEMissionTable read complete
     
     
@@ -30,18 +40,18 @@ We don't really care about the directory structure, we just want the data. So
 this class finds the files we want, if the time is within th data, and returns the file names. 
 The file names contain the dwell time (in spacecraft time 114262324, or t0.sct) and the dwell sequence number (21).
 
-    >>> dwell_file = RXTEMissionTable.get_dwell_file(t0,'<path to rxte asm data>/camera_data')
+    >>> dwell_file = RXTEMissionTable.get_dwell_file(t0)
     >>> print (dwell_file)
-    <path to rxte asm data>/cam_dwasc_02/amts114262324.21
+    camera_data/cam_dwasc_02/amts114262324.21
     
 If we want data from 90s after t0, we can get that dwell file name too:
 
-    >>> dwell_file2 = RXTEMissionTable.get_dwell_file(t0+90,'<path to rxte asm data>/camera_data')
+    >>> dwell_file2 = RXTEMissionTable.get_dwell_file(t0+90)
     >>> print (dwell_file2)
-    <path to rxte asm data>/cam_dwasc_02/amts114262324.22
+    camera_data/cam_dwasc_02/amts114262324.22
     
 
-Great! Now we have two dwell files. Go to phaii.rst to learn how to read in the data.
+Great! Now we have two dwell files. Go to phaii.rst to learn how to read them in for plotting 
 
 
 

@@ -87,11 +87,19 @@ hosted publicly on Zenodo. You will need to download the tar files to get the mi
 are stored in a consistent directory structure. But instead of having to navigate a winding maze of directories, we provide a
 couple of  classes built to retrieve the data you want once you’ve downloaded it. RXTE ASM data is ordered
 into dwells and dwell sequence numbers that are summarized in the mission table file.</p>
+<section id="downloading-the-rxte-asm-data">
+<h2>Downloading the RXTE ASM Data<a class="headerlink" href="#downloading-the-rxte-asm-data" title="Permalink to this heading">¶</a></h2>
+<p>To Download the RXTE ASM Data either for testing or for running gdt-rxte
+At the commandline
+$ gdt-data init
+$ gdt-data download rxte-asm</p>
+<p>This will download all the RXTE ASM Camera light curve data</p>
+</section>
 <section id="finding-rxte-asm-data">
 <h2>Finding RXTE ASM Data<a class="headerlink" href="#finding-rxte-asm-data" title="Permalink to this heading">¶</a></h2>
 <p>Let’s start with reading in the RXTE ASM Mission Table. Note that this table needs to be read only at the beginning of a session:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gdt.missions.rxte.asm.missiontable</span> <span class="kn">import</span> <span class="n">RXTEMissionTable</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">asm_table_data</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;&lt;path to rxte data&gt;/asm_mission_pointing.table&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asm_table_data</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
 <span class="go">RXTEMissionTable read complete</span>
 </pre></div>
 </div>
@@ -106,18 +114,18 @@ into dwells and dwell sequence numbers that are summarized in the mission table 
 <p>We don’t really care about the directory structure, we just want the data. So
 this class finds the files we want, if the time is within th data, and returns the file names.
 The file names contain the dwell time (in spacecraft time 114262324, or t0.sct) and the dwell sequence number (21).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="s1">&#39;&lt;path to rxte asm data&gt;/camera_data&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">dwell_file</span><span class="p">)</span>
-<span class="go">&lt;path to rxte asm data&gt;/cam_dwasc_02/amts114262324.21</span>
+<span class="go">camera_data/cam_dwasc_02/amts114262324.21</span>
 </pre></div>
 </div>
 <p>If we want data from 90s after t0, we can get that dwell file name too:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file2</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="o">+</span><span class="mi">90</span><span class="p">,</span><span class="s1">&#39;&lt;path to rxte asm data&gt;/camera_data&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dwell_file2</span> <span class="o">=</span> <span class="n">RXTEMissionTable</span><span class="o">.</span><span class="n">get_dwell_file</span><span class="p">(</span><span class="n">t0</span><span class="o">+</span><span class="mi">90</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">dwell_file2</span><span class="p">)</span>
-<span class="go">&lt;path to rxte asm data&gt;/cam_dwasc_02/amts114262324.22</span>
+<span class="go">camera_data/cam_dwasc_02/amts114262324.22</span>
 </pre></div>
 </div>
-<p>Great! Now we have two dwell files. Go to phaii.rst to learn how to read in the data.</p>
+<p>Great! Now we have two dwell files. Go to phaii.rst to learn how to read them in for plotting</p>
 </section>
 <section id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this heading">¶</a></h2>
@@ -155,6 +163,7 @@ size=&quot;8.0, 12.0&quot;;
         <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
 <ul>
 <li><a class="reference internal" href="#">RXTE ASM Data Finders (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gdt.missions.rxte.missiontable</span></code>)</a><ul>
+<li><a class="reference internal" href="#downloading-the-rxte-asm-data">Downloading the RXTE ASM Data</a></li>
 <li><a class="reference internal" href="#finding-rxte-asm-data">Finding RXTE ASM Data</a></li>
 <li><a class="reference internal" href="#reference-api">Reference/API</a><ul>
 <li><a class="reference internal" href="#module-gdt.missions.rxte.asm.missiontable">gdt.missions.rxte.asm.missiontable Module</a><ul>

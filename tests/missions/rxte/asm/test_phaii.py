@@ -41,13 +41,13 @@ import unittest
 #from gdt.core import data_path
 from gdt.missions.rxte.asm.phaii import RxtePhaiiNoHeaders
 from gdt.core.binning.binned import combine_by_factor
+from gdt.core import data_path
+asm_path = data_path/'rxte-asm'
 
-directory = os.environ['RXTE_DATA_PATH']
-test_dwell_file = os.path.join(directory,"cam_dwasc_01/amts72245226.01")
+test_dwell_file = "camera_data/cam_dwasc_01/amts72245226.01"
 t0 = 72245338.62156843
 detector = "ssc2"
 
-#@unittest.skipIf(not test_dwell_file.exists(), "test files aren't downloaded.")
 class TestRxtePhaii(unittest.TestCase):
     
     def setUp(self):
@@ -64,7 +64,7 @@ class TestRxtePhaii(unittest.TestCase):
         self.assertAlmostEqual(self.phaii.energy_range[1], 12.0, places=3)
 
     def test_filename(self):
-        self.assertEqual(self.phaii.filename, test_dwell_file)
+        self.assertEqual(self.phaii.filename, os.path.join(asm_path,test_dwell_file))
     
     def test_num_chans(self):
         self.assertEqual(self.phaii.num_chans, 3)
@@ -112,11 +112,9 @@ class TestRxtePhaii(unittest.TestCase):
         self.assertEqual(self.phaii.num_chans, spec.size)
 
     def test_write(self):
-#        with TemporaryDirectory() as this_path:
-        this_path = os.environ['RXTE_OUTDIR']
         outfile = "test_rxte_phaii_ssc2_960416.phaii"
-        RxtePhaiiNoHeaders.write(self.phaii,filename=outfile, directory=this_path, overwrite=True)
-        phaii = RxtePhaiiNoHeaders.open_fits(os.path.join(this_path, outfile), self.phaii.detector, self.phaii.trigtime)
+        RxtePhaiiNoHeaders.write(self.phaii,filename=outfile, directory=asm_path, overwrite=True)
+        phaii = RxtePhaiiNoHeaders.open_fits(os.path.join(asm_path,outfile), self.phaii.detector, self.phaii.trigtime)
         self.assertListEqual(phaii.data.counts.tolist(), self.phaii.data.counts.tolist())
         self.assertListEqual(phaii.data.tstart.tolist(), self.phaii.data.tstart.tolist())
         self.assertListEqual(phaii.data.tstop.tolist(), self.phaii.data.tstop.tolist())
